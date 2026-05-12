@@ -309,12 +309,15 @@
     const comandasHoje    = comandas.filter(c => c.data === dataHoje);
     const lancamentosHoje = lancamentos.filter(l => l.data === dataHoje);
 
-    // Métricas financeiras
-    const totalVendas = comandasHoje
-      .filter(c => c.status !== 'cancelada')
-      .reduce((s, c) => s + (Number(c.total) || 0), 0);
+    // Métricas financeiras — todos os valores vêm dos lançamentos, nunca das comandas
+    // (as comandas servem apenas para dados descritivos: cliente, itens, produtos)
 
-    // Entradas manuais: exclui lançamentos gerados automaticamente pelas comandas (categoria 'vendas')
+    // Total de vendas = lançamentos de receita com categoria 'vendas' (gerados pelas comandas)
+    const totalVendas = lancamentosHoje
+      .filter(l => l.tipo === 'receita' && l.categoria === 'vendas')
+      .reduce((s, l) => s + (Number(l.valor) || 0), 0);
+
+    // Entradas manuais = lançamentos de receita que NÃO são de vendas de comandas
     const totalEntrada = lancamentosHoje
       .filter(l => l.tipo === 'receita' && l.categoria !== 'vendas')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
@@ -323,7 +326,7 @@
       .filter(l => l.tipo === 'despesa')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
-    // Saldo = vendas das comandas + entradas manuais - despesas (sem dupla contagem)
+    // Saldo = vendas + entradas manuais - despesas (sem dupla contagem)
     const saldoDia = totalVendas + totalEntrada - totalSaida;
 
     // Contagem de pedidos
