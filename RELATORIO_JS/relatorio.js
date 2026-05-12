@@ -303,7 +303,7 @@
 
     const comandas     = db && db.comandas     ? Object.values(db.comandas)     : [];
     const lancamentos  = db && db.lancamentos  ? Object.values(db.lancamentos)  : [];
-    const funcionarios = db && db.funcionarios ? Object.values(db.funcionarios) : [];
+    const funcionariosCadastrados = db && db.funcionarios ? Object.values(db.funcionarios) : [];
 
     // Filtrar pelo dia atual
     const comandasHoje    = comandas.filter(c => c.data === dataHoje);
@@ -322,7 +322,7 @@
       .filter(l => l.tipo === 'despesa')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
-    const saldoDia = totalEntrada - totalSaida;
+    const saldoDia = totalVendas + totalEntrada - totalSaida;
 
     // Contagem de pedidos
     const totalPedidos     = comandasHoje.length;
@@ -330,9 +330,9 @@
     const pedidosPendentes  = comandasHoje.filter(c => c.status === 'pendente').length;
     const pedidosCancelados = comandasHoje.filter(c => c.status === 'cancelada').length;
 
-    // Produtos mais vendidos
+    // Produtos mais vendidos (excluindo canceladas)
     const mapaProdutos = {};
-    comandasHoje.forEach(c => {
+    comandasHoje.filter(c => c.status !== 'cancelada').forEach(c => {
       if (!c.itens) return;
       const itens = Array.isArray(c.itens) ? c.itens : Object.values(c.itens);
       itens.forEach(item => {
@@ -348,6 +348,16 @@
     const produtosVendidos = Object.values(mapaProdutos)
       .sort((a, b) => b.quantidade - a.quantidade);
 
+    // Funcionários pagos hoje: lançamentos tipo 'despesa' + categoria 'salarios' no dia
+    // O ADM salva com categoria='salarios' quando é pagamento de funcionário
+    const funcionariosPagosHoje = lancamentosHoje
+      .filter(l => l.tipo === 'despesa' && l.categoria === 'salarios')
+      .map(l => ({
+        nome:  l.descricao || 'Funcionário',
+        valor: Number(l.valor) || 0,
+        data:  l.data || dataHoje,
+      }));
+
     return {
       dataHoje,
       totalVendas,
@@ -359,7 +369,7 @@
       pedidosPendentes,
       pedidosCancelados,
       produtosVendidos,
-      funcionarios,
+      funcionarios: funcionariosPagosHoje,
       lancamentosHoje,
       totalLancamentos: lancamentosHoje.length,
     };
@@ -442,27 +452,31 @@
       html += secao('💰 Lançamentos do Dia', tabela);
     }
 
-    // ---- Funcionários ----
+    // ---- Funcionários pagos hoje (categoria = salarios) ----
     if (d.funcionarios.length > 0) {
       let lista = '<div class="rel-func-lista">';
       d.funcionarios.forEach(f => {
-        const inicial = (f.nome || f.name || 'F')[0].toUpperCase();
+        const inicial = (f.nome || 'F')[0].toUpperCase();
         lista +=
           '<div class="rel-func-item">' +
             '<div class="rel-func-avatar">' + inicial + '</div>' +
-            '<span>' + escHtml(f.nome || f.name || 'Funcionário') + '</span>' +
-            (f.cargo ? '<span style="color:#7a8299;font-size:.8rem;margin-left:auto">' + escHtml(f.cargo) + '</span>' : '') +
+            '<div style="display:flex;flex-direction:column;gap:2px;flex:1">' +
+              '<span style="font-weight:600">' + escHtml(f.nome) + '</span>' +
+              '<span style="font-size:.75rem;color:var(--muted)">Pago em: ' + escHtml(f.data) + '</span>' +
+            '</div>' +
+            '<span style="color:#ff4d6d;font-weight:700;margin-left:auto">' + moeda(f.valor) + '</span>' +
           '</div>';
       });
       lista += '</div>';
-      html += secao('👥 Equipe', lista);
+      html += secao('💳 Funcionários Pagos Hoje', lista);
     }
 
     // ---- Resumo financeiro final ----
     html += secao('🏦 Resumo Financeiro',
       '<div class="rel-resumo-lista">' +
-        linhaResumo('Total Receitas',  moeda(d.totalEntrada)) +
-        linhaResumo('Total Despesas',  moeda(d.totalSaida)) +
+        linhaResumo('Total de Vendas',    moeda(d.totalVendas)) +
+        linhaResumo('Outras Entradas',    moeda(d.totalEntrada)) +
+        linhaResumo('Total Despesas',     moeda(d.totalSaida)) +
         linhaTotalResumo('Saldo Final do Dia', moeda(d.saldoDia)) +
       '</div>'
     );
@@ -702,25 +716,43 @@
       linha();
     }
 
-    /* ---------- EQUIPE ---------- */
+    /* ---------- FUNCIONÁRIOS PAGOS ---------- */
     if (d.funcionarios.length > 0) {
       if (y > 240) { doc.addPage(); y = 20; }
 
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(11);
       doc.setTextColor(30, 40, 60);
-      doc.text('EQUIPE', L, y);
+      doc.text('FUNCIONÁRIOS PAGOS', L, y);
       nl(7);
 
-      d.funcionarios.forEach(f => {
+      // Cabeçalho
+      doc.setFillColor(230, 232, 240);
+      doc.rect(L, y - 4, W, 8, 'F');
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(80, 90, 110);
+      doc.text('FUNCIONÁRIO / DESCRIÇÃO', L + 2, y + 1);
+      doc.text('DATA', L + W * 0.65, y + 1);
+      doc.text('VALOR PAGO', L + W, y + 1, { align: 'right' });
+      nl(7);
+
+      d.funcionarios.forEach((f, idx) => {
         if (y > 270) { doc.addPage(); y = 20; }
+        if (idx % 2 === 0) {
+          doc.setFillColor(248, 249, 253);
+          doc.rect(L, y - 3, W, 7, 'F');
+        }
         doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9.5);
-        doc.setTextColor(40, 50, 70);
-        const nome  = f.nome || f.name || 'Funcionário';
-        const cargo = f.cargo ? ' — ' + f.cargo : '';
-        doc.text('• ' + nome + cargo, L + 2, y);
-        nl(6);
+        doc.setFontSize(9);
+        doc.setTextColor(30, 40, 60);
+        doc.text((f.nome || 'Funcionário').slice(0, 35), L + 2, y + 1);
+        doc.setTextColor(100, 110, 130);
+        doc.text(f.data || '', L + W * 0.65, y + 1);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(220, 60, 80);
+        doc.text(moeda(f.valor), L + W, y + 1, { align: 'right' });
+        nl(7);
       });
       linha();
     }
@@ -772,15 +804,16 @@
   async function confirmarApagar() {
     const dataHoje = hoje();
     const confirmou = window.confirm(
-      '⚠️ ATENÇÃO — Apagar dados de ' + hojeFormatado() + '\n\n' +
+      '⚠️ ATENÇÃO — Fechar caixa de ' + hojeFormatado() + '\n\n' +
       'Esta ação irá apagar:\n' +
       '  • Todas as comandas do dia\n' +
-      '  • Todos os lançamentos do dia\n\n' +
+      '  • Todos os lançamentos financeiros do dia\n' +
+      '  • (Dashboard será zerado automaticamente)\n\n' +
       'NÃO serão apagados:\n' +
       '  • Produtos cadastrados\n' +
-      '  • Funcionários\n' +
+      '  • Funcionários cadastrados\n' +
       '  • Configurações do sistema\n\n' +
-      'Recomendamos gerar o PDF antes de apagar.\n\n' +
+      '⚠️ Gere o PDF antes de apagar!\n\n' +
       'Deseja continuar?'
     );
     if (!confirmou) return;
