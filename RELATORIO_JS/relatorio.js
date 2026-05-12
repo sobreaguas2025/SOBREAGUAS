@@ -314,14 +314,16 @@
       .filter(c => c.status !== 'cancelada')
       .reduce((s, c) => s + (Number(c.total) || 0), 0);
 
+    // Entradas manuais: exclui lançamentos gerados automaticamente pelas comandas (categoria 'vendas')
     const totalEntrada = lancamentosHoje
-      .filter(l => l.tipo === 'receita')
+      .filter(l => l.tipo === 'receita' && l.categoria !== 'vendas')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
     const totalSaida = lancamentosHoje
       .filter(l => l.tipo === 'despesa')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
+    // Saldo = vendas das comandas + entradas manuais - despesas (sem dupla contagem)
     const saldoDia = totalVendas + totalEntrada - totalSaida;
 
     // Contagem de pedidos
