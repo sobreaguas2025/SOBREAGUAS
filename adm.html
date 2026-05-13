@@ -1819,11 +1819,22 @@ function mudarStatusComanda(id,status){
   if(!c)return;
   c.status=status;
   STATE.comandas[id]=c;
-  // auto-lança receita quando concluída
+
+  // Remove qualquer lançamento anterior vinculado a esta comanda (evita duplicatas e lançamentos de canceladas)
+  const descConcluida = 'Comanda #'+id;
+  const descSite = 'Pedido #'+id;
+  getLancArr().forEach(l=>{
+    if(l.categoria==='vendas' && (l.descricao.startsWith(descConcluida) || l.descricao.startsWith(descSite))){
+      delete STATE.lancamentos[l.id];
+    }
+  });
+
+  // Só cria novo lançamento se concluída (cancelada não gera receita)
   if(status==='concluida'){
     const _lId=STATE.nextLancId++;
     STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+id+(c.cliente?' - '+c.cliente:''),categoria:'vendas',valor:c.total,data:new Date().toISOString().split('T')[0]};
   }
+
   saveState();
   renderComandas();
   toast('Status atualizado: '+status);
