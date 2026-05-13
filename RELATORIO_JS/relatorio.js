@@ -430,7 +430,8 @@
 
     // ---- Cards de métricas ----
     let html = '<div class="relatorio-metricas">';
-    html += metricaCard('Total de Vendas',   moeda(d.totalVendas),   'verde',   iconeCoin());
+    const totalUnidades = d.produtosVendidos.reduce((s, p) => s + p.quantidade, 0);
+    html += metricaCard('Total de Vendas', totalUnidades + ' unid.', 'verde', iconeCoin());
     html += metricaCard('Entradas',          moeda(d.totalEntrada),  'azul',    iconeUp());
     html += metricaCard('Saídas / Despesas', moeda(d.totalSaida),    'vermelho',iconeDown());
     html += metricaCard('Saldo do Dia',      moeda(d.saldoDia),      d.saldoDia >= 0 ? 'verde' : 'vermelho', iconeWallet());
@@ -622,7 +623,7 @@
 
     // Cards de métricas (2 colunas)
     const metricas = [
-      { label: 'Total de Vendas',  valor: moeda(d.totalVendas),   cor: [0, 180, 100]  },
+      { label: 'Total de Vendas', valor: d.produtosVendidos.reduce((s,p) => s+p.quantidade, 0) + ' unid.', cor: [0, 180, 100] },
       { label: 'Total Entradas',   valor: moeda(d.totalEntrada),  cor: [0, 150, 220]  },
       { label: 'Total Saídas',     valor: moeda(d.totalSaida),    cor: [220, 60, 80]  },
       { label: 'Saldo do Dia',     valor: moeda(d.saldoDia),      cor: d.saldoDia >= 0 ? [0,180,100] : [220,60,80] },
