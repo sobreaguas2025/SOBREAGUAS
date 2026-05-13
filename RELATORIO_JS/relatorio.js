@@ -22,6 +22,11 @@
   /* ============================================================
      UTILITÁRIOS
   ============================================================ */
+  function fmtDataBR(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-');
+    return d + '/' + m + '/' + y;
+  }
   function hoje() {
     return new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
   }
@@ -243,7 +248,7 @@
     const loading   = document.getElementById('relatorioLoading');
     const conteudo  = document.getElementById('relatorioConteudo');
     const footer    = document.getElementById('relatorioFooter');
-    const dataLabel = document.getElementById('relatorioDataLabel');
+    // dataLabel removido — substituído pelo input de data
     const btnPDF    = document.getElementById('relBtnGerarPDF');
     const btnApagar = document.getElementById('relBtnApagar');
 
@@ -417,8 +422,8 @@
       el.innerHTML =
         '<div class="relatorio-vazio">' +
           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" width="48" height="48"><path d="M0 112.5V422.3c0 18 10.1 35 27 41.3c87 32.5 174 10.3 261-11.9c79.8-20.3 159.6-40.7 239.3-18.9c23 6.3 48.7-9.5 48.7-33.4V89.7c0-18-10.1-35-27-41.3C462 15.9 375 38.1 288 60.3C208.2 80.6 128.4 100.9 48.7 79.1C25.6 72.8 0 88.6 0 112.5zM288 352c-44.2 0-80-43-80-96s35.8-96 80-96s80 43 80 96s-35.8 96-80 96zM64 352c0-17.7 14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32zm384 32c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/></svg>' +
-          '<p>Nenhum movimento registrado hoje.</p>' +
-          '<p style="font-size:0.78rem;margin-top:4px">Data: ' + hojeFormatado() + '</p>' +
+          '<p>Nenhum movimento registrado nesta data.</p>' +
+          '<p style="font-size:0.78rem;margin-top:4px">Data: ' + fmtDataBR(d.dataHoje) + '</p>' +
         '</div>';
       return;
     }
@@ -599,7 +604,7 @@
 
     doc.setFontSize(9);
     doc.setTextColor(140, 150, 170);
-    doc.text('Emitido em: ' + agora() + '   |   Referência: ' + hojeFormatado(), L, y);
+    const _dataRef = document.getElementById('relatorioDataInput')?.value; doc.text('Emitido em: ' + agora() + '   |   Referência: ' + (_dataRef ? fmtDataBR(_dataRef) : hojeFormatado()), L, y);
 
     y = 48;
 
@@ -797,7 +802,7 @@
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.setTextColor(180, 190, 210);
-    doc.text('FECHAMENTO DO CAIXA — ' + hojeFormatado(), L + 2, y + 3);
+    const _dataRef2 = document.getElementById('relatorioDataInput')?.value; doc.text('FECHAMENTO DO CAIXA — ' + (_dataRef2 ? fmtDataBR(_dataRef2) : hojeFormatado()), L + 2, y + 3);
     nl(9);
     doc.setFontSize(14);
     doc.setTextColor(255, 210, 63);
@@ -837,7 +842,7 @@
     const inputData = document.getElementById('relatorioDataInput');
     const dataHoje = (inputData && inputData.value) ? inputData.value : hoje();
     const confirmou = window.confirm(
-      '⚠️ ATENÇÃO — Fechar caixa de ' + hojeFormatado() + '\n\n' +
+      '⚠️ ATENÇÃO — Apagar dados de ' + fmtDataBR(document.getElementById("relatorioDataInput")?.value || hoje()) + '\n\n' +
       'Esta ação irá apagar:\n' +
       '  • Todas as comandas do dia\n' +
       '  • Todos os lançamentos financeiros do dia\n' +
@@ -888,7 +893,7 @@
         conteudo.innerHTML =
           '<div class="relatorio-vazio">' +
             '<p style="color:#00e5a0;font-size:1rem">✓ Caixa fechado com sucesso!</p>' +
-            '<p style="font-size:.82rem;margin-top:6px;color:#7a8299">Os dados de ' + hojeFormatado() + ' foram removidos.</p>' +
+            '<p style="font-size:.82rem;margin-top:6px;color:#7a8299">Os dados de ' + fmtDataBR(document.getElementById("relatorioDataInput")?.value || hoje()) + ' foram removidos.</p>' +
           '</div>';
       }
       if (btnApagar) { btnApagar.style.display = 'none'; }
