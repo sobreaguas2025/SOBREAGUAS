@@ -468,6 +468,7 @@ select option{background:var(--card)}
         <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
           <input type="month" id="filtroMesFinanceiro" onchange="renderFinanceiro()"
             style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:8px 12px;color:var(--text);font-size:.85rem;outline:none;font-family:'DM Sans',sans-serif">
+          <button class="btn btn-ghost btn-sm" onclick="zerarLancamentosAntigos()" title="Apaga todos os lançamentos de meses anteriores ao atual" style="color:var(--red);border-color:rgba(255,77,109,.3);background:rgba(255,77,109,.07)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:.9em;height:.9em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg> Zerar Antigos</button>
           <button class="btn btn-accent" onclick="abrirModalLancamento()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg> Novo Lançamento</button>
         </div>
       </div>
@@ -2106,6 +2107,20 @@ function removerLancamento(id){
   delete STATE.lancamentos[id];
   saveState();
   renderFinanceiro();
+}
+function zerarLancamentosAntigos(){
+  const mesAtual=new Date().toISOString().substring(0,7); // "YYYY-MM"
+  const antigos=Object.keys(STATE.lancamentos).filter(k=>{
+    const l=STATE.lancamentos[k];
+    return !l.data||!l.data.startsWith(mesAtual);
+  });
+  if(antigos.length===0){toast('Nenhum lançamento de meses anteriores encontrado.');return;}
+  if(!confirm('Apagar '+antigos.length+' lançamento(s) de meses anteriores a '+mesAtual+'?\n\nEsta ação não pode ser desfeita.')){return;}
+  antigos.forEach(k=>delete STATE.lancamentos[k]);
+  saveState();
+  renderFinanceiro();
+  toast('✓ '+antigos.length+' lançamento(s) antigo(s) removido(s).');
+
   toast('Lançamento removido.');
 }
 
