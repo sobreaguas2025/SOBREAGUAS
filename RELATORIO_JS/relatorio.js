@@ -359,7 +359,7 @@
       .filter(l => l.tipo === 'despesa')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
-    const saldoDia = totalVendas + totalEntrada - totalSaida;
+    const saldoDia = totalEntrada - totalSaida;
 
     // Contagem de pedidos
     const totalPedidos     = comandasHoje.length;
@@ -453,14 +453,12 @@
           '<thead><tr>' +
             '<th>Produto</th>' +
             '<th style="text-align:center">Qtd</th>' +
-            '<th>Total</th>' +
           '</tr></thead><tbody>';
       d.produtosVendidos.forEach(p => {
         tabela +=
           '<tr>' +
             '<td>' + (p.icone ? p.icone + ' ' : '') + escHtml(p.nome) + '</td>' +
             '<td style="text-align:center"><span class="badge-qty">' + p.quantidade + 'x</span></td>' +
-            '<td class="valor-verde">' + moeda(p.total) + '</td>' +
           '</tr>';
       });
       tabela += '</tbody></table>';
@@ -688,7 +686,6 @@
       doc.setTextColor(80, 90, 110);
       doc.text('PRODUTO', L + 2, y + 1);
       doc.text('QTD', L + W * 0.6, y + 1);
-      doc.text('TOTAL', L + W, y + 1, { align: 'right' });
       nl(7);
 
       d.produtosVendidos.forEach((p, idx) => {
@@ -704,8 +701,6 @@
         doc.setFont('helvetica', 'bold');
         doc.setTextColor(0, 150, 220);
         doc.text(p.quantidade + 'x', L + W * 0.6, y + 1);
-        doc.setTextColor(0, 160, 90);
-        doc.text(moeda(p.total), L + W, y + 1, { align: 'right' });
         nl(7);
       });
       linha();
