@@ -1348,6 +1348,7 @@ select option{background:var(--card)}
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="fecharModal('modalDetalhesComanda')">Fechar</button>
       <button class="btn btn-green" id="btnEnviarComandaExist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp</button>
+      <button class="btn" style="background:var(--accent);color:#000;font-weight:600" id="btnSalvarEdicaoComanda">💾 Salvar</button>
     </div>
   </div>
 </div>
@@ -1820,50 +1821,75 @@ function mudarStatusComanda(id,status){
   if(!c)return;
   c.status=status;
   STATE.comandas[id]=c;
-
-  // Remove qualquer lançamento anterior vinculado a esta comanda (evita duplicatas e lançamentos de canceladas)
-  const descConcluida = 'Comanda #'+id;
-  const descSite = 'Pedido #'+id;
+  // Remove lançamentos anteriores vinculados (evita duplicatas e lançamentos de canceladas)
+  const descConcluida='Comanda #'+id;
+  const descSite='Pedido #'+id;
   getLancArr().forEach(l=>{
-    if(l.categoria==='vendas' && (l.descricao.startsWith(descConcluida) || l.descricao.startsWith(descSite))){
+    if(l.categoria==='vendas'&&(l.descricao.startsWith(descConcluida)||l.descricao.startsWith(descSite))){
       delete STATE.lancamentos[l.id];
     }
   });
-
-  // Só cria novo lançamento se concluída (cancelada não gera receita)
+  // Só cria lançamento se concluída
   if(status==='concluida'){
     const _lId=STATE.nextLancId++;
     STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+id+(c.cliente?' - '+c.cliente:''),categoria:'vendas',valor:c.total,data:new Date().toISOString().split('T')[0]};
   }
-
   saveState();
   renderComandas();
   toast('Status atualizado: '+status);
 }
 function apagarComanda(id){
-  if(!confirm("Apagar comanda #"+id+" permanentemente? Esta ação não pode ser desfeita."))return;
-  // Remove lançamentos vinculados a esta comanda
+  if(!confirm('Apagar comanda #'+id+' permanentemente? Esta ação não pode ser desfeita.'))return;
   getLancArr().forEach(l=>{
-    if(l.categoria==="vendas"&&(l.descricao.startsWith("Comanda #"+id)||l.descricao.startsWith("Pedido #"+id))){
+    if(l.categoria==='vendas'&&(l.descricao.startsWith('Comanda #'+id)||l.descricao.startsWith('Pedido #'+id))){
       delete STATE.lancamentos[l.id];
     }
   });
-  // Remove a comanda
   delete STATE.comandas[id];
   saveState();
   renderComandas();
-  toast("Comanda #"+id+" apagada.");
+  toast('Comanda #'+id+' apagada.');
 }
-
 function verDetalheComanda(id){
   const c=getCmdArr().find(c=>c.id===id);
   if(!c)return;
   document.getElementById('detalhesComandaBody').innerHTML=`
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">CLIENTE</div><strong>${c.cliente||'Anônimo'}</strong></div>
-      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">DATA</div><strong>${fmtDate(c.data)}</strong></div>
-      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">ENDEREÇO</div><strong>${c.endereco||'—'}</strong></div>
-      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">PAGAMENTO</div><strong>${fmtPagamento(c.pagamento)}</strong></div>
+      <div>
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">CLIENTE</label>
+        <input id="editCliente" class="form-input" value="${c.cliente||''}" placeholder="Nome do cliente" style="width:100%">
+      </div>
+      <div>
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">STATUS</label>
+        <select id="editStatus" class="form-input" style="width:100%">
+          <option value="pendente" ${c.status==='pendente'?'selected':''}>Pendente</option>
+          <option value="concluida" ${c.status==='concluida'?'selected':''}>Concluída</option>
+          <option value="cancelada" ${c.status==='cancelada'?'selected':''}>Cancelada</option>
+        </select>
+      </div>
+      <div style="grid-column:1/-1">
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">ENDEREÇO</label>
+        <input id="editEndereco" class="form-input" value="${c.endereco||''}" placeholder="Endereço de entrega" style="width:100%">
+      </div>
+      <div>
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">PAGAMENTO</label>
+        <select id="editPagamento" class="form-input" style="width:100%">
+          <option value="dinheiro" ${c.pagamento==='dinheiro'?'selected':''}>💵 Dinheiro</option>
+          <option value="pix" ${c.pagamento==='pix'?'selected':''}>📱 PIX</option>
+          <option value="cartao_debito" ${c.pagamento==='cartao_debito'?'selected':''}>💳 Débito</option>
+          <option value="cartao_credito" ${c.pagamento==='cartao_credito'?'selected':''}>💳 Crédito</option>
+          <option value="fiado" ${c.pagamento==='fiado'?'selected':''}>📝 Fiado</option>
+          <option value="a_confirmar" ${c.pagamento==='a_confirmar'?'selected':''}>❓ A confirmar</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">TELEFONE</label>
+        <input id="editTelefone" class="form-input" value="${c.telefone||''}" placeholder="Telefone" style="width:100%">
+      </div>
+      <div style="grid-column:1/-1">
+        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">OBSERVAÇÕES</label>
+        <textarea id="editObs" class="form-input" placeholder="Observações..." style="width:100%;min-height:60px;resize:vertical">${c.obs||''}</textarea>
+      </div>
     </div>
     <div class="comanda-itens">${c.itens.map(it=>`
       <div class="comanda-item-row">
@@ -1873,10 +1899,41 @@ function verDetalheComanda(id){
         <span class="comanda-item-total">${fmt(it.preco*it.qty)}</span>
       </div>`).join('')}</div>
     <div class="comanda-total-box"><span>Total</span><strong>${fmt(c.total)}</strong></div>
-    ${c.obs?`<div style="margin-top:12px;font-size:.85rem;color:var(--muted)">Obs: ${c.obs}</div>`:''}
   `;
   document.getElementById('btnEnviarComandaExist').onclick=()=>enviarComandaWhatsAppById(id);
+  document.getElementById('btnSalvarEdicaoComanda').onclick=()=>salvarEdicaoComanda(id);
   abrirModal('modalDetalhesComanda');
+}
+function salvarEdicaoComanda(id){
+  const c=getCmdArr().find(c=>c.id===id);
+  if(!c)return;
+  const novoStatus=document.getElementById('editStatus').value;
+  const statusAnterior=c.status;
+  c.cliente=document.getElementById('editCliente').value.trim();
+  c.telefone=document.getElementById('editTelefone').value.trim();
+  c.endereco=document.getElementById('editEndereco').value.trim();
+  c.pagamento=document.getElementById('editPagamento').value;
+  c.obs=document.getElementById('editObs').value.trim();
+  c.status=novoStatus;
+  STATE.comandas[id]=c;
+  // Atualiza lançamentos se o status mudou
+  if(novoStatus!==statusAnterior){
+    const descConcluida='Comanda #'+id;
+    const descSite='Pedido #'+id;
+    getLancArr().forEach(l=>{
+      if(l.categoria==='vendas'&&(l.descricao.startsWith(descConcluida)||l.descricao.startsWith(descSite))){
+        delete STATE.lancamentos[l.id];
+      }
+    });
+    if(novoStatus==='concluida'){
+      const _lId=STATE.nextLancId++;
+      STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+id+(c.cliente?' - '+c.cliente:''),categoria:'vendas',valor:c.total,data:new Date().toISOString().split('T')[0]};
+    }
+  }
+  saveState();
+  renderComandas();
+  fecharModal('modalDetalhesComanda');
+  toast('Comanda #'+id+' atualizada!');
 }
 
 /* Modal Nova Comanda */
