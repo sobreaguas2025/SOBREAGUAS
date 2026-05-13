@@ -172,7 +172,10 @@
             </div>
             <div>
               <h2>Fechamento de Caixa</h2>
-              <p id="relatorioDataLabel">Carregando...</p>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+                <input type="date" id="relatorioDataInput"
+                  style="background:var(--card,#1a1d2e);border:1px solid var(--border,#2a2d3e);border-radius:8px;padding:4px 10px;color:var(--text,#fff);font-size:.85rem;font-family:inherit;outline:none;cursor:pointer">
+              </div>
             </div>
           </div>
           <button class="relatorio-btn-fechar" id="relBtnFechar" title="Fechar">
@@ -254,11 +257,40 @@
     overlay.classList.add('aberto');
     document.body.style.overflow = 'hidden';
 
-    dataLabel.textContent = 'Data: ' + hojeFormatado();
+    // Configura o seletor de data com hoje por padrão
+    const inputData = document.getElementById('relatorioDataInput');
+    inputData.value = hoje();
+    inputData.addEventListener('change', async function() {
+      loading.style.display  = 'block';
+      conteudo.style.display = 'none';
+      footer.style.display   = 'none';
+      btnApagar.style.display = 'none';
+      btnPDF.disabled = true;
+      ocultarAlerta();
+      dadosDia = null;
+      try {
+        dadosDia = await carregarDadosDia(inputData.value);
+      } catch(e) {
+        loading.style.display = 'none';
+        conteudo.style.display = 'block';
+        conteudo.innerHTML = '<div class="relatorio-vazio"><p>Erro ao carregar dados.<br><small style="color:#7a8299">'+e.message+'</small></p></div>';
+        footer.style.display = 'flex';
+        return;
+      }
+      loading.style.display  = 'none';
+      conteudo.style.display = 'block';
+      footer.style.display   = 'flex';
+      renderizarConteudo(dadosDia);
+      btnPDF.disabled = false;
+      if(dadosDia.totalPedidos > 0 || dadosDia.totalLancamentos > 0){
+        btnApagar.style.display = 'inline-flex';
+        btnApagar.disabled = false;
+      }
+    });
 
     // Carregar dados
     try {
-      dadosDia = await carregarDadosDia();
+      dadosDia = await carregarDadosDia(inputData.value);
     } catch (e) {
       loading.style.display = 'none';
       conteudo.style.display = 'block';
@@ -297,36 +329,31 @@
   /* ============================================================
      CARREGAR DADOS DO DIA
   ============================================================ */
-  async function carregarDadosDia() {
-    const dataHoje   = hoje();
+  async function carregarDadosDia(dataSelecionada) {
+    const dataHoje   = dataSelecionada || hoje();
     const db         = await lerPath(DB_PATH);
 
     const comandas     = db && db.comandas     ? Object.values(db.comandas)     : [];
     const lancamentos  = db && db.lancamentos  ? Object.values(db.lancamentos)  : [];
     const funcionariosCadastrados = db && db.funcionarios ? Object.values(db.funcionarios) : [];
 
-    // Filtrar pelo dia atual
+    // Filtrar pela data selecionada
     const comandasHoje    = comandas.filter(c => c.data === dataHoje);
     const lancamentosHoje = lancamentos.filter(l => l.data === dataHoje);
 
-    // Métricas financeiras — todos os valores vêm dos lançamentos, nunca das comandas
-    // (as comandas servem apenas para dados descritivos: cliente, itens, produtos)
+    // Métricas financeiras
+    const totalVendas = comandasHoje
+      .filter(c => c.status !== 'cancelada')
+      .reduce((s, c) => s + (Number(c.total) || 0), 0);
 
-    // Total de vendas = lançamentos de receita com categoria 'vendas' (gerados pelas comandas)
-    const totalVendas = lancamentosHoje
-      .filter(l => l.tipo === 'receita' && l.categoria === 'vendas')
-      .reduce((s, l) => s + (Number(l.valor) || 0), 0);
-
-    // Entradas manuais = lançamentos de receita que NÃO são de vendas de comandas
     const totalEntrada = lancamentosHoje
-      .filter(l => l.tipo === 'receita' && l.categoria !== 'vendas')
+      .filter(l => l.tipo === 'receita')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
     const totalSaida = lancamentosHoje
       .filter(l => l.tipo === 'despesa')
       .reduce((s, l) => s + (Number(l.valor) || 0), 0);
 
-    // Saldo = vendas + entradas manuais - despesas (sem dupla contagem)
     const saldoDia = totalVendas + totalEntrada - totalSaida;
 
     // Contagem de pedidos
@@ -807,7 +834,8 @@
      CONFIRMAR E APAGAR DADOS DO DIA
   ============================================================ */
   async function confirmarApagar() {
-    const dataHoje = hoje();
+    const inputData = document.getElementById('relatorioDataInput');
+    const dataHoje = (inputData && inputData.value) ? inputData.value : hoje();
     const confirmou = window.confirm(
       '⚠️ ATENÇÃO — Fechar caixa de ' + hojeFormatado() + '\n\n' +
       'Esta ação irá apagar:\n' +
