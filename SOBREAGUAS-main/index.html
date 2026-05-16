@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SobreÁguas  — Distribuidora Premium</title>
+  <link rel="stylesheet" href="STYLE/style.css" />
+  <!-- Ícones modernos via CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ============================================================
+       LOADER — Tela de carregamento inicial
+  ============================================================ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">
+        <i class="fa-solid fa-droplet"></i>
+        <i class="fa-solid fa-fire"></i>
+      </div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+      <p>Carregando...</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NAVBAR — Barra de navegação fixa no topo
+  ============================================================ -->
+  <header id="navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <div class="nav-logo">
+        <i class="fa-solid fa-droplet"></i>
+        <span>Sobre<strong>Águas</strong></span>
+      </div>
+
+      <!-- Links de navegação (desktop) -->
+      <nav class="nav-links">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <!-- Botão do carrinho + hamburguer mobile -->
+      <div class="nav-actions">
+        <button class="btn-cart" id="btnAbrirCarrinho" aria-label="Abrir carrinho">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="btn-hamburger" id="btnMenu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#inicio" onclick="fecharMenu()">Início</a>
+      <a href="#produtos" onclick="fecharMenu()">Produtos</a>
+      <a href="#sobre" onclick="fecharMenu()">Sobre</a>
+      <a href="#contato" onclick="fecharMenu()">Contato</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO — Banner principal com parallax
+  ============================================================ -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-content fade-in">
+      <div class="hero-badge">
+        <i class="fa-solid fa-bolt"></i> Entrega Rápida
+      </div>
+      <h1>Água & Gás<br /><span>na sua porta</span></h1>
+      <p>Entrega em <strong>30 a 60 minutos</strong> na sua região.<br />
+         Qualidade premium, preço justo e atendimento rápido.</p>
+
+      <!-- Indicadores de prazo -->
+      <div class="hero-stats">
+        <div class="stat">
+          <i class="fa-solid fa-clock"></i>
+          <div>
+            <strong>30–60 min</strong>
+            <span>Prazo de entrega</span>
+          </div>
+        </div>
+        <div class="stat">
+          <i class="fa-solid fa-star"></i>
+          <div>
+            <strong>4.9 ★</strong>
+            <span>Avaliação</span>
+          </div>
+        </div>
+        <div class="stat">
+          <i class="fa-solid fa-truck"></i>
+          <div>
+            <strong>Grátis</strong>
+            <span>Frete na região</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-btns">
+        <a href="#produtos" class="btn-primary">
+          <i class="fa-solid fa-bag-shopping"></i> Ver Produtos
+        </a>
+        <a href="https://wa.me/5583996231032" target="_blank" class="btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Fale Conosco
+        </a>
+      </div>
+    </div>
+
+    <!-- Imagem decorativa hero -->
+    <div class="hero-visual fade-in-delay">
+      <div class="hero-glow-ring"></div>
+      <div class="hero-icon-main">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BANNER DE ENTREGA — faixa destacando prazo
+  ============================================================ -->
+  <div class="delivery-banner scroll-reveal">
+    <div class="delivery-inner">
+      <div class="delivery-item">
+        <i class="fa-solid fa-clock"></i>
+        <span>Entrega em <strong>30 a 60 minutos</strong></span>
+      </div>
+      <div class="delivery-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Cobrimos toda a <strong>região de Itabaiana</strong></span>
+      </div>
+      <div class="delivery-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Produto <strong>garantido</strong> e lacrado</span>
+      </div>
+      <div class="delivery-item">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Pedido pelo <strong>WhatsApp</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PRODUTOS — Grade de produtos à venda
+  ============================================================ -->
+  <section id="produtos" class="produtos-section">
+    <div class="section-header scroll-reveal">
+      <span class="section-tag">Catálogo</span>
+      <h2>Nossos <span>Produtos</span></h2>
+      <p>Selecione os produtos e monte seu pedido direto pelo carrinho</p>
+    </div>
+
+    <!-- Filtros de categoria -->
+    <div class="filtros scroll-reveal">
+      <button class="filtro-btn active" data-filtro="todos">Todos</button>
+      <button class="filtro-btn" data-filtro="agua">
+        <i class="fa-solid fa-droplet"></i> Água
+      </button>
+      <button class="filtro-btn" data-filtro="gas">
+        <i class="fa-solid fa-fire"></i> Gás
+      </button>
+      <button class="filtro-btn" data-filtro="acessorios">
+        <i class="fa-solid fa-wrench"></i> Acessórios
+      </button>
+      <button class="filtro-btn" data-filtro="limpeza">
+        <i class="fa-solid fa-broom"></i> Limpeza
+      </button>
+    </div>
+
+    <!-- Grade de produtos — gerada pelo JS -->
+    <div class="produtos-grid" id="produtosGrid"></div>
+  </section>
+
+  <!-- ============================================================
+       SOBRE — Seção institucional
+  ============================================================ -->
+  <section id="sobre" class="sobre-section">
+    <div class="sobre-content scroll-reveal">
+      <div class="section-tag">Sobre Nós</div>
+      <h2>Tradição e <span>qualidade</span></h2>
+      <p>Há mais de 5 anos levando água e gás de qualidade para lares e empresas da região. Nossa missão é simples: entrega rápida, produto garantido e atendimento humano.</p>
+      <ul class="sobre-lista">
+        <li><i class="fa-solid fa-check"></i> Produtos certificados e lacrados</li>
+        <!--<li><i class="fa-solid fa-check"></i> Entrega em 30 a 60 minutos</li>-->
+        <li><i class="fa-solid fa-check"></i> Pagamento no recebimento</li>
+        <li><i class="fa-solid fa-check"></i> De Segunda a Sabado</li>
+      </ul>
+    </div>
+    <div class="sobre-visual scroll-reveal">
+      <div class="sobre-card glass">
+        <i class="fa-solid fa-award"></i>
+        <strong>10+</strong>
+        <span>Anos de mercado</span>
+      </div>
+      <div class="sobre-card glass">
+        <i class="fa-solid fa-users"></i>
+        <strong>5k+</strong>
+        <span>Clientes satisfeitos</span>
+      </div>
+      <div class="sobre-card glass">
+        <i class="fa-solid fa-truck-fast"></i>
+        <strong>50k+</strong>
+        <span>Entregas realizadas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTATO — Rodapé / seção de contato
+  ============================================================ -->
+  <section id="contato" class="contato-section scroll-reveal">
+    <div class="contato-inner">
+      <h2>Fale com a gente</h2>
+      <p>Estamos prontos para atender seu pedido agora mesmo!</p>
+      <div class="contato-btns">
+        <a href="https://wa.me/5583996231032" target="_blank" class="btn-whatsapp-lg">
+          <i class="fa-brands fa-whatsapp"></i> Pedir pelo WhatsApp
+        </a>
+        <a href="https://instagram.com/seuinstagram" target="_blank" class="btn-instagram-lg">
+          <i class="fa-brands fa-instagram"></i> Ver no Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <i class="fa-solid fa-droplet"></i>
+        <span>Sobre<strong>Águas</strong></span>
+      </div>
+      <p>© 2025 AquaGás Distribuidora — Todos os direitos reservados</p>
+      <div class="footer-social">
+        <a href="https://wa.me/5583996231032" target="_blank" aria-label="WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/seuinstagram" target="_blank" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÕES FLUTUANTES — WhatsApp e Instagram
+  ============================================================ -->
+  <div class="floating-btns">
+    <a href="https://wa.me/5583996231032" target="_blank" class="fab-btn fab-whatsapp" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://instagram.com/seuinstagram" target="_blank" class="fab-btn fab-instagram" title="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+  </div>
+
+  <!-- ============================================================
+       CARRINHO LATERAL (Sidebar)
+  ============================================================ -->
+  <div class="cart-overlay" id="cartOverlay" onclick="fecharCarrinho()"></div>
+
+  <aside class="cart-sidebar" id="cartSidebar">
+    <!-- Cabeçalho do carrinho -->
+    <div class="cart-header">
+      <div class="cart-title">
+        <i class="fa-solid fa-receipt"></i>
+        <h3>Sua Comanda</h3>
+      </div>
+      <button class="cart-close" id="btnFecharCarrinho" aria-label="Fechar carrinho">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Badge de prazo de entrega -->
+    <div class="cart-delivery-info">
+      <i class="fa-solid fa-clock"></i>
+      <span>Entrega estimada: <strong>30 a 60 minutos</strong></span>
+    </div>
+
+    <!-- Lista de itens -->
+    <div class="cart-items" id="cartItems">
+      <!-- Itens inseridos pelo JS -->
+      <div class="cart-empty" id="cartEmpty">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <p>Seu carrinho está vazio</p>
+        <span>Adicione produtos para fazer seu pedido</span>
+      </div>
+    </div>
+
+    <!-- Resumo e total -->
+    <div class="cart-footer" id="cartFooter" style="display:none;">
+
+      <!-- Dados do cliente (opcionais) -->
+      <div class="cart-cliente" id="cartCliente">
+        <div class="cart-cliente-header">
+          <i class="fa-solid fa-user"></i>
+          <span>Dados para entrega <em>(opcional)</em></span>
+        </div>
+        <div class="cart-cliente-fields">
+          <div class="cart-field">
+            <label for="clienteNome">
+              <i class="fa-solid fa-user-pen"></i> Nome
+            </label>
+            <input
+              type="text"
+              id="clienteNome"
+              placeholder="Seu nome completo"
+              autocomplete="name"
+              maxlength="80"
+            />
+          </div>
+          <div class="cart-field">
+            <label for="clienteEndereco">
+              <i class="fa-solid fa-location-dot"></i> Endereço
+            </label>
+            <input
+              type="text"
+              id="clienteEndereco"
+              placeholder="Rua, nº, bairro..."
+              autocomplete="street-address"
+              maxlength="120"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <strong id="subtotal">R$ 0,00</strong>
+        </div>
+        <div class="summary-row">
+          <span>Frete:</span>
+          <strong class="frete-gratis">GRÁTIS</strong>
+        </div>
+        <div class="summary-row total-row">
+          <span>Total:</span>
+          <strong id="totalGeral">R$ 0,00</strong>
+        </div>
+      </div>
+
+      <!-- Botão finalizar pedido -->
+      <button class="btn-finalizar" id="btnFinalizar" onclick="finalizarPedido()">
+        <i class="fa-brands fa-whatsapp"></i>
+        Enviar Comanda pelo WhatsApp
+      </button>
+
+      <button class="btn-limpar" onclick="limparCarrinho()">
+        <i class="fa-solid fa-trash"></i> Limpar carrinho
+      </button>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       MODAL DE NOTIFICAÇÃO — Feedback ao adicionar produto
+  ============================================================ -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-check-circle"></i>
+    <span id="toastMsg">Produto adicionado!</span>
+  </div>
+
+  <!-- Script principal -->
+  <!-- Firebase SDK (para sincronização em tempo real com o ADM) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="SCRIPT/script.js"></script>
+</body>
+</html>
