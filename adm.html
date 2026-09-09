@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SobreÁguas — Painel Administrativo</title>
 <link rel="stylesheet" href="RELATORIO_STYLE/relatorio.css" />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 /* ============================================================
    RESET & TOKENS
@@ -73,9 +73,9 @@ body.no-anim *{transition:none!important;animation:none!important}
 .login-wrap{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px 40px;width:min(420px,90vw);box-shadow:var(--shadow)}
 .login-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px;justify-content:center}
 .login-logo i{font-size:2rem;color:var(--accent)}
-.login-logo span{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text)}
+.login-logo span{font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text)}
 .login-logo strong{color:var(--accent)}
-.login-wrap h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:6px;text-align:center}
+.login-wrap h2{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:6px;text-align:center}
 .login-wrap p{color:var(--muted);font-size:.875rem;text-align:center;margin-bottom:28px}
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-size:.8rem;font-weight:500;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
@@ -99,7 +99,7 @@ body.no-anim *{transition:none!important;animation:none!important}
 .sidebar{position:fixed;top:0;left:0;height:100vh;width:240px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;transition:.3s}
 .sidebar-logo{padding:24px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .sidebar-logo i{font-size:1.5rem;color:var(--accent)}
-.sidebar-logo span{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem}
+.sidebar-logo span{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.1rem}
 .sidebar-logo strong{color:var(--accent)}
 nav.sidenav{flex:1;padding:12px 8px;overflow-y:auto}
 .nav-section{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:10px 12px 4px}
@@ -120,7 +120,7 @@ nav.sidenav{flex:1;padding:12px 8px;overflow-y:auto}
 body:not(:has(.sidebar)) .main-content,
 .sidebar[style*="display: none"] ~ .main-content{margin-left:0}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.topbar-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700}
+.topbar-title{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:700}
 .topbar-right{display:flex;align-items:center;gap:12px}
 .btn-menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.2rem;cursor:pointer;padding:6px}
 .page{padding:28px;display:none}
@@ -133,12 +133,12 @@ body:not(:has(.sidebar)) .main-content,
 .metric-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;overflow:hidden}
 .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent-color,var(--accent))}
 .metric-card .metric-icon{width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--accent-color,var(--accent));margin-bottom:14px}
-.metric-card .metric-value{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;line-height:1}
+.metric-card .metric-value{font-family:'DM Sans',sans-serif;font-size:1.6rem;font-weight:800;line-height:1}
 .metric-card .metric-label{font-size:.8rem;color:var(--muted);margin-top:4px}
 .metric-card .metric-change{font-size:.78rem;margin-top:8px}
 .metric-card .metric-change.up{color:var(--green)}
 .metric-card .metric-change.down{color:var(--red)}
-.section-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .section-title i{color:var(--accent)}
 
 /* ============================================================
@@ -146,7 +146,7 @@ body:not(:has(.sidebar)) .main-content,
 ============================================================ */
 .table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .table-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.table-header h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700}
+.table-header h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700}
 table{width:100%;border-collapse:collapse}
 th{padding:11px 16px;text-align:left;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface)}
 td{padding:13px 16px;font-size:.875rem;border-bottom:1px solid rgba(37,42,56,.5)}
@@ -160,6 +160,9 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .badge-ativo{background:rgba(0,229,160,.15);color:var(--green)}
 .badge-inativo{background:rgba(255,77,109,.15);color:var(--red)}
 .badge-pendente{background:rgba(255,210,63,.15);color:var(--yellow)}
+.badge-preparo{background:rgba(255,107,53,.15);color:var(--accent2)}
+.badge-saiu_entrega{background:rgba(124,77,255,.15);color:var(--accent3)}
+.badge-entregue{background:rgba(0,229,160,.15);color:var(--green)}
 .badge-concluida{background:rgba(0,229,160,.15);color:var(--green)}
 .badge-cancelada{background:rgba(255,77,109,.15);color:var(--red)}
 
@@ -184,7 +187,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .modal-overlay.open{display:flex}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:min(560px,100%);max-height:90vh;overflow-y:auto;box-shadow:var(--shadow)}
 .modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:2}
-.modal-header h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
+.modal-header h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem}
 .modal-body{padding:24px}
 .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:var(--surface)}
 .btn-close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:4px;border-radius:6px;transition:.15s}
@@ -198,7 +201,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .produto-adm-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;transition:.2s}
 .produto-adm-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .produto-adm-icon{font-size:2.5rem;margin-bottom:10px;line-height:1}
-.produto-adm-nome{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px}
+.produto-adm-nome{font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:4px}
 .produto-adm-preco{color:var(--accent);font-weight:700;font-size:1.1rem;margin-bottom:4px}
 .produto-adm-desc{font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.4}
 .produto-adm-actions{display:flex;gap:8px}
@@ -215,7 +218,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .btn-qty-mini{width:24px;height:24px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:.15s}
 .btn-qty-mini:hover{border-color:var(--accent);color:var(--accent)}
 .comanda-total-box{background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,212,255,.05));border:1px solid rgba(0,212,255,.2);border-radius:10px;padding:14px;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
-.comanda-total-box strong{font-family:'Syne',sans-serif;font-size:1.3rem;color:var(--accent)}
+.comanda-total-box strong{font-family:'DM Sans',sans-serif;font-size:1.3rem;color:var(--accent)}
 
 /* ============================================================
    CHARTS (pure css / simple)
@@ -247,7 +250,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
    SETTINGS
 ============================================================ */
 .settings-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px}
-.settings-section h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-size:1rem}
+.settings-section h3{font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-size:1rem}
 .settings-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
 .settings-row:last-child{border-bottom:none}
 .settings-row label{font-size:.9rem;color:var(--text)}
@@ -303,8 +306,6 @@ input:checked+.slider:before{transform:translateX(20px);background:#000}
 .input-group{display:flex;gap:8px}
 .input-group input{flex:1}
 select option{background:var(--card)}
-.form-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text);font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;transition:.2s;box-sizing:border-box}
-.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,212,255,.12)}
 .divider{border:none;border-top:1px solid var(--border);margin:20px 0}
 .text-accent{color:var(--accent)}
 .text-green{color:var(--green)}
@@ -385,6 +386,7 @@ select option{background:var(--card)}
       <div class="nav-section">Gestão</div>
       <div class="nav-item" onclick="showPage('financeiro')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM432 312a24 24 0 1 1 0-48 24 24 0 1 1 0 48z"/></svg> Financeiro</div>
       <div class="nav-item" onclick="showPage('funcionarios')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H144C64.5 192 0 256.5 0 336v-37.3zm640 0C640 256.5 575.5 192 496 192H458.7c-15.9 0-31 3.4-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 38.2-16.8 72.5-43.3 96c.2 0 .4 0 .7 0H618.7c11.8 0 21.3-9.6 21.3-21.3V298.7zM320 176a112 112 0 1 1 0 224 112 112 0 1 1 0-224zm-5.3 336H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H325.3z"/></svg> Funcionários</div>
+      <div class="nav-item" onclick="showPage('entregas')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Controle de Entregas</div>
       <div class="nav-section">Catálogo</div>
       <div class="nav-item" onclick="showPage('produtos')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M58.9 42.1c3-6.1 9.3-9.9 16-9.9H320V800H168c-13.7 0-24.7-11.1-24.7-24.8l-21.7-680.2c-.4-11.6 6.6-22 17.3-25.9zM0 112v32H578.9L544 512H96L58.9 112H0zM384 0H565.1c6.7 0 13 3.8 16 9.9l17.3 42.2c10.7 3.9 17.7 14.3 17.3 25.9L592 512H384V0zM64 544l16 128H560l16-128H64z"/></svg> Produtos</div>
       <div class="nav-section">Sistema</div>
@@ -452,7 +454,9 @@ select option{background:var(--card)}
             <select id="filtroStatusComanda" onchange="filtrarComandas(document.getElementById('buscaComanda').value)" style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:8px 12px;color:var(--text);font-size:.85rem;outline:none;font-family:'DM Sans',sans-serif">
               <option value="">Todos status</option>
               <option value="pendente">Pendente</option>
-              <option value="concluida">Concluída</option>
+              <option value="preparo">Em preparo</option>
+              <option value="saiu_entrega">Saiu para entrega</option>
+              <option value="entregue">Entregue</option>
               <option value="cancelada">Cancelada</option>
             </select>
           </div>
@@ -465,12 +469,7 @@ select option{background:var(--card)}
     <div class="page" id="page-financeiro">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
         <div class="section-title" style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM432 312a24 24 0 1 1 0-48 24 24 0 1 1 0 48z"/></svg> Controle Financeiro</div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <input type="month" id="filtroMesFinanceiro" onchange="renderFinanceiro()"
-            style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:8px 12px;color:var(--text);font-size:.85rem;outline:none;font-family:'DM Sans',sans-serif">
-          <button class="btn btn-ghost btn-sm" onclick="zerarLancamentosAntigos()" title="Apaga todos os lançamentos de meses anteriores ao atual" style="color:var(--red);border-color:rgba(255,77,109,.3);background:rgba(255,77,109,.07)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:.9em;height:.9em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg> Zerar Antigos</button>
-          <button class="btn btn-accent" onclick="abrirModalLancamento()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg> Novo Lançamento</button>
-        </div>
+        <button class="btn btn-accent" onclick="abrirModalLancamento()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg> Novo Lançamento</button>
       </div>
       <div class="metrics-grid" id="finMetricsGrid"></div>
       <div class="table-wrap" style="margin-top:20px">
@@ -502,6 +501,31 @@ select option{background:var(--card)}
           </div>
         </div>
         <div style="overflow-x:auto"><table id="funcTable"></table></div>
+      </div>
+    </div>
+
+    <!-- ========== CONTROLE DE ENTREGAS ========== -->
+    <div class="page" id="page-entregas">
+      <div class="section-title"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Controle de Entregas</div>
+      <div class="table-wrap" style="margin-bottom:20px">
+        <div class="table-header">
+          <h3>Período</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <div class="filtro-periodo-btns" style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="btn btn-ghost btn-sm periodo-btn active" data-periodo="hoje" onclick="setPeriodoEntregas('hoje')">Hoje</button>
+              <button class="btn btn-ghost btn-sm periodo-btn" data-periodo="ontem" onclick="setPeriodoEntregas('ontem')">Ontem</button>
+              <button class="btn btn-ghost btn-sm periodo-btn" data-periodo="7dias" onclick="setPeriodoEntregas('7dias')">Últimos 7 dias</button>
+              <button class="btn btn-ghost btn-sm periodo-btn" data-periodo="mes" onclick="setPeriodoEntregas('mes')">Este mês</button>
+            </div>
+            <input type="date" id="entregasDataIni" onchange="setPeriodoEntregas('custom')" style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:7px 10px;color:var(--text);font-size:.82rem;outline:none;font-family:'DM Sans',sans-serif"/>
+            <span style="color:var(--muted);font-size:.82rem">até</span>
+            <input type="date" id="entregasDataFim" onchange="setPeriodoEntregas('custom')" style="background:var(--card);border:1px solid var(--border);border-radius:9px;padding:7px 10px;color:var(--text);font-size:.82rem;outline:none;font-family:'DM Sans',sans-serif"/>
+          </div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-header"><h3>Distribuição de Entregas por Funcionário</h3></div>
+        <div style="overflow-x:auto"><table id="entregasTable"></table></div>
       </div>
     </div>
 
@@ -539,7 +563,7 @@ select option{background:var(--card)}
         <div class="form-row">
           <div class="form-group">
             <label>Nome da Empresa</label>
-            <input type="text" id="cfgNomeEmpresa" placeholder="AquaGás Distribuidora"/>
+            <input type="text" id="cfgNomeEmpresa" placeholder="SobreÁguas Distribuidora"/>
           </div>
           <div class="form-group">
             <label>Prazo de Entrega</label>
@@ -552,7 +576,7 @@ select option{background:var(--card)}
         <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent3)"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.7 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg> Segurança</h3>
         <div class="form-group">
           <label>E-mail do Administrador</label>
-          <input type="email" id="cfgEmail" placeholder="admin@aquagas.com"/>
+          <input type="email" id="cfgEmail" placeholder="admin@sobreaguas.com"/>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -591,7 +615,7 @@ select option{background:var(--card)}
         <span style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Preview ao vivo</span>
         <div id="previewPill" style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:8px 18px;gap:12px">
           <div id="previewDot" style="width:14px;height:14px;border-radius:50%;background:var(--accent)"></div>
-          <span id="previewNome" style="font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas ADM</span>
+          <span id="previewNome" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas ADM</span>
           <span id="previewFonte" style="font-size:.8rem;color:var(--muted)">Tema escuro · DM Sans</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px">
@@ -775,7 +799,7 @@ select option{background:var(--card)}
         <span style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Preview ao vivo</span>
         <div style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:8px 18px">
           <div id="sitePreviewDot" style="width:14px;height:14px;border-radius:50%;background:#00b4ff"></div>
-          <span id="sitePreviewNome" style="font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas</span>
+          <span id="sitePreviewNome" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas</span>
           <span id="sitePreviewTheme" style="font-size:.8rem;color:var(--muted)">Tema padrão · Exo 2</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px">
@@ -1049,7 +1073,7 @@ select option{background:var(--card)}
           <h3>🗂️ Rodapé</h3>
           <div class="form-group">
             <label>Texto de copyright</label>
-            <input type="text" id="siteFooterCopy" placeholder="© 2025 AquaGás Distribuidora — Todos os direitos reservados"/>
+            <input type="text" id="siteFooterCopy" placeholder="© 2025 SobreÁguas Distribuidora — Todos os direitos reservados"/>
           </div>
           <div class="settings-row">
             <div><label>Mostrar ícones sociais no rodapé</label></div>
@@ -1129,7 +1153,7 @@ select option{background:var(--card)}
 <div class="modal-overlay" id="modalComanda">
   <div class="modal">
     <div class="modal-header">
-      <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent)"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg> Nova Comanda</h3>
+      <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent)"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg> <span id="modalComandaTitle">Nova Comanda</span></h3>
       <button class="btn-close" onclick="fecharModal('modalComanda')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
     </div>
     <div class="modal-body">
@@ -1147,14 +1171,32 @@ select option{background:var(--card)}
         <label>Endereço de Entrega</label>
         <input type="text" id="comandaEndereco" placeholder="Rua, número, bairro, cidade"/>
       </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Forma de Pagamento</label>
+          <select id="comandaPagamento">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="pix">PIX</option>
+            <option value="cartao_debito">Cartão de Débito</option>
+            <option value="cartao_credito">Cartão de Crédito</option>
+            <option value="fiado">Fiado</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="comandaStatus">
+            <option value="pendente">Pendente</option>
+            <option value="preparo">Em preparo</option>
+            <option value="saiu_entrega">Saiu para entrega</option>
+            <option value="entregue">Entregue</option>
+            <option value="cancelada">Cancelada</option>
+          </select>
+        </div>
+      </div>
       <div class="form-group">
-        <label>Forma de Pagamento</label>
-        <select id="comandaPagamento">
-          <option value="dinheiro">Dinheiro</option>
-          <option value="pix">PIX</option>
-          <option value="cartao_debito">Cartão de Débito</option>
-          <option value="cartao_credito">Cartão de Crédito</option>
-          <option value="fiado">Fiado</option>
+        <label>Funcionário responsável pela entrega</label>
+        <select id="comandaFuncionario">
+          <option value="">Selecionar funcionário</option>
         </select>
       </div>
       <hr class="divider"/>
@@ -1355,7 +1397,6 @@ select option{background:var(--card)}
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="fecharModal('modalDetalhesComanda')">Fechar</button>
       <button class="btn btn-green" id="btnEnviarComandaExist"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp</button>
-      <button class="btn" style="background:var(--accent);color:#000;font-weight:600" id="btnSalvarEdicaoComanda">💾 Salvar</button>
     </div>
   </div>
 </div>
@@ -1430,7 +1471,7 @@ function fbOnValue(path, cb){
 ---------------------------------------------------------- */
 function getDefaultState(){
   return {
-    config:{ whatsapp:'5583996231032', instagram:'https://instagram.com/aquagas', nomeEmpresa:'AquaGás Distribuidora', prazoEntrega:'30 a 60 minutos' },
+    config:{ whatsapp:'5583996231032', instagram:'https://instagram.com/sobreaguas', nomeEmpresa:'SobreÁguas Distribuidora', prazoEntrega:'30 a 60 minutos' },
     produtos:[],
     nextProdId:1,
     comandas:{},
@@ -1675,7 +1716,7 @@ function enviarRecuperacao(){
 /* ==========================================================
    NAV
 ========================================================== */
-const pageTitles={dashboard:'Dashboard',comandas:'Comandas',financeiro:'Financeiro',funcionarios:'Funcionários',produtos:'Produtos',configuracoes:'Configurações',layout:'Layout ADM','layout-site':'Layout do Site'};
+const pageTitles={dashboard:'Dashboard',comandas:'Comandas',financeiro:'Financeiro',funcionarios:'Funcionários',entregas:'Controle de Entregas',produtos:'Produtos',configuracoes:'Configurações',layout:'Layout ADM','layout-site':'Layout do Site'};
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
@@ -1686,6 +1727,7 @@ function showPage(id){
   if(id==='comandas')renderComandas();
   if(id==='financeiro')renderFinanceiro();
   if(id==='funcionarios')renderFuncionarios();
+  if(id==='entregas')renderControleEntregas();
   if(id==='produtos')renderProdutosAdm();
   if(id==='layout')initLayoutPage();
   if(id==='layout-site')initLayoutSitePage();
@@ -1726,11 +1768,9 @@ document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click
 function renderDashboard(){
   updateTopbarDate();
   const hoje=new Date().toISOString().split('T')[0];
-  // Dashboard usa o mês selecionado no financeiro, ou o mês atual se não houver seleção
-  const inputMesDash=document.getElementById('filtroMesFinanceiro');
-  const mes=(inputMesDash&&inputMesDash.value)||hoje.substring(0,7);
-  const recMes=getLancArr().filter(l=>l.tipo==='receita'&&l.data&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
-  const despMes=getLancArr().filter(l=>l.tipo==='despesa'&&l.data&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
+  const mes=hoje.substring(0,7);
+  const recMes=getLancArr().filter(l=>l.tipo==='receita'&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
+  const despMes=getLancArr().filter(l=>l.tipo==='despesa'&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
   const lucro=recMes-despMes;
   const conc=getCmdArr().filter(c=>c.status==='concluida');
   const ticket=conc.length?conc.reduce((a,c)=>a+c.total,0)/conc.length:0;
@@ -1796,109 +1836,75 @@ function renderComandas(lista=null){
 function renderComandasTable(tableId,data,mini){
   const t=document.getElementById(tableId);
   if(!t)return;
-  if(!data.length){t.innerHTML=`<tr><td colspan="7"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg><p>Nenhuma comanda encontrada</p></div></td></tr>`;return;}
-  const cols=mini?['#','Cliente','Total','Status','Data']:['#','Cliente','Endereço','Total','Pagamento','Status','Data','Ações'];
+  if(!data.length){t.innerHTML=`<tr><td colspan="8"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg><p>Nenhuma comanda encontrada</p></div></td></tr>`;return;}
+  const cols=mini?['#','Cliente','Total','Status','Data']:['#','Cliente','Funcionário','Total','Pagamento','Status','Data','Ações'];
   t.innerHTML=`<thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead><tbody>${data.map(c=>`
     <tr>
       <td>#${c.id}</td>
       <td><strong>${c.cliente||'Anônimo'}</strong>${c.origem==='site'?' <span class="badge" style="background:rgba(0,212,255,.15);color:var(--accent);font-size:.65rem">🌐 Site</span>':''}</td>
-      ${!mini?`<td style="max-width:160px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.endereco||'—'}</td>`:''}
+      ${!mini?`<td>${c.funcionarioNome||'<span style="color:var(--muted)">—</span>'}</td>`:''}
       <td><strong>${fmt(c.total)}</strong></td>
       ${!mini?`<td>${fmtPagamento(c.pagamento)}</td>`:''}
-      <td><span class="badge badge-${c.status}">${c.status}</span></td>
+      <td>${mini?`<span class="badge badge-${c.status}">${fmtStatusEntrega(c.status)}</span>`
+        :`<select onchange="mudarStatusComanda(${c.id},this.value)" class="badge badge-${c.status}" style="border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.73rem;font-weight:600;appearance:none;-webkit-appearance:none">
+            ${['pendente','preparo','saiu_entrega','entregue','cancelada'].map(s=>`<option value="${s}" ${c.status===s?'selected':''}>${fmtStatusEntrega(s)}</option>`).join('')}
+          </select>`}</td>
       <td>${fmtDate(c.data)}</td>
       ${!mini?`<td>
         <div style="display:flex;gap:6px">
-          <button class="btn btn-ghost btn-sm" onclick="verDetalheComanda(${c.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg></button>
-          <button class="btn btn-green btn-sm" onclick="mudarStatusComanda(${c.id},'concluida')" title="Concluir"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg></button>
+          <button class="btn btn-ghost btn-sm" onclick="editarComanda(${c.id})" title="Editar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg></button>
+          <button class="btn btn-ghost btn-sm" onclick="verDetalheComanda(${c.id})" title="Ver detalhes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg></button>
           <button class="btn btn-danger btn-sm" onclick="mudarStatusComanda(${c.id},'cancelada')" title="Cancelar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
-          <button class="btn btn-danger btn-sm" onclick="apagarComanda(${c.id})" title="Apagar comanda" style="opacity:.7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button>
         </div>
       </td>`:''}
     </tr>`).join('')}</tbody>`;
 }
 function fmtPagamento(p){return{dinheiro:'💵 Dinheiro',pix:'📱 PIX',cartao_debito:'💳 Débito',cartao_credito:'💳 Crédito',fiado:'📝 Fiado',a_confirmar:'❓ A confirmar'}[p]||(p||'—');}
+/* Rótulos de status de entrega — 'concluida' mantido por compatibilidade com comandas antigas */
+const STATUS_ENTREGA_LABELS={pendente:'Pendente',preparo:'Em preparo',saiu_entrega:'Saiu para entrega',entregue:'Entregue',concluida:'Entregue',cancelada:'Cancelada'};
+function fmtStatusEntrega(s){return STATUS_ENTREGA_LABELS[s]||s||'—';}
+/* Considera 'concluida' (legado) equivalente a 'entregue' */
+function statusConcluiu(s){return s==='entregue'||s==='concluida';}
+function statusEmAndamento(s){return s==='pendente'||s==='preparo'||s==='saiu_entrega';}
 function filtrarComandas(q){
   const status=document.getElementById('filtroStatusComanda').value;
   let lista=getCmdArr().slice().reverse();
-  if(q)lista=lista.filter(c=>(c.cliente||'').toLowerCase().includes(q.toLowerCase())||(c.endereco||'').toLowerCase().includes(q.toLowerCase())||String(c.id).includes(q));
+  if(q)lista=lista.filter(c=>(c.cliente||'').toLowerCase().includes(q.toLowerCase())||(c.endereco||'').toLowerCase().includes(q.toLowerCase())||(c.funcionarioNome||'').toLowerCase().includes(q.toLowerCase())||String(c.id).includes(q));
   if(status)lista=lista.filter(c=>c.status===status);
   renderComandasTable('comandasTable',lista,false);
+}
+/* Lança receita automaticamente na 1ª vez que a comanda é marcada como entregue */
+function lancarReceitaSeEntregue(comanda,statusAnterior){
+  if(statusConcluiu(comanda.status) && !statusConcluiu(statusAnterior) && !comanda._faturado){
+    const _lId=STATE.nextLancId++;
+    STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+comanda.id+(comanda.cliente?' - '+comanda.cliente:''),categoria:'vendas',valor:comanda.total,data:new Date().toISOString().split('T')[0]};
+    comanda._faturado=true;
+  }
 }
 function mudarStatusComanda(id,status){
   const c=getCmdArr().find(c=>c.id===id);
   if(!c)return;
+  const statusAnterior=c.status;
   c.status=status;
+  lancarReceitaSeEntregue(c,statusAnterior);
   STATE.comandas[id]=c;
-  // Remove lançamentos anteriores vinculados (evita duplicatas e lançamentos de canceladas)
-  const descConcluida='Comanda #'+id;
-  const descSite='Pedido #'+id;
-  getLancArr().forEach(l=>{
-    if(l.categoria==='vendas'&&(l.descricao.startsWith(descConcluida)||l.descricao.startsWith(descSite))){
-      delete STATE.lancamentos[l.id];
-    }
-  });
-  // Só cria lançamento se concluída
-  if(status==='concluida'){
-    const _lId=STATE.nextLancId++;
-    STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+id+(c.cliente?' - '+c.cliente:''),categoria:'vendas',valor:c.total,data:new Date().toISOString().split('T')[0]};
-  }
   saveState();
   renderComandas();
-  toast('Status atualizado: '+status);
-}
-function apagarComanda(id){
-  if(!confirm('Apagar comanda #'+id+' permanentemente? Esta ação não pode ser desfeita.'))return;
-  getLancArr().forEach(l=>{
-    if(l.categoria==='vendas'&&(l.descricao.startsWith('Comanda #'+id)||l.descricao.startsWith('Pedido #'+id))){
-      delete STATE.lancamentos[l.id];
-    }
-  });
-  delete STATE.comandas[id];
-  saveState();
-  renderComandas();
-  toast('Comanda #'+id+' apagada.');
+  if(document.getElementById('page-entregas')?.classList.contains('active'))renderControleEntregas();
+  if(document.getElementById('page-funcionarios')?.classList.contains('active'))renderFuncionarios();
+  toast('Status atualizado: '+fmtStatusEntrega(status));
 }
 function verDetalheComanda(id){
   const c=getCmdArr().find(c=>c.id===id);
   if(!c)return;
   document.getElementById('detalhesComandaBody').innerHTML=`
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
-      <div>
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">CLIENTE</label>
-        <input id="editCliente" class="form-input" value="${c.cliente||''}" placeholder="Nome do cliente" style="width:100%">
-      </div>
-      <div>
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">STATUS</label>
-        <select id="editStatus" class="form-input" style="width:100%">
-          <option value="pendente" ${c.status==='pendente'?'selected':''}>Pendente</option>
-          <option value="concluida" ${c.status==='concluida'?'selected':''}>Concluída</option>
-          <option value="cancelada" ${c.status==='cancelada'?'selected':''}>Cancelada</option>
-        </select>
-      </div>
-      <div style="grid-column:1/-1">
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">ENDEREÇO</label>
-        <input id="editEndereco" class="form-input" value="${c.endereco||''}" placeholder="Endereço de entrega" style="width:100%">
-      </div>
-      <div>
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">PAGAMENTO</label>
-        <select id="editPagamento" class="form-input" style="width:100%">
-          <option value="dinheiro" ${c.pagamento==='dinheiro'?'selected':''}>💵 Dinheiro</option>
-          <option value="pix" ${c.pagamento==='pix'?'selected':''}>📱 PIX</option>
-          <option value="cartao_debito" ${c.pagamento==='cartao_debito'?'selected':''}>💳 Débito</option>
-          <option value="cartao_credito" ${c.pagamento==='cartao_credito'?'selected':''}>💳 Crédito</option>
-          <option value="fiado" ${c.pagamento==='fiado'?'selected':''}>📝 Fiado</option>
-          <option value="a_confirmar" ${c.pagamento==='a_confirmar'?'selected':''}>❓ A confirmar</option>
-        </select>
-      </div>
-      <div>
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">TELEFONE</label>
-        <input id="editTelefone" class="form-input" value="${c.telefone||''}" placeholder="Telefone" style="width:100%">
-      </div>
-      <div style="grid-column:1/-1">
-        <label style="font-size:.75rem;color:var(--muted);display:block;margin-bottom:4px">OBSERVAÇÕES</label>
-        <textarea id="editObs" class="form-input" placeholder="Observações..." style="width:100%;min-height:60px;resize:vertical">${c.obs||''}</textarea>
-      </div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">CLIENTE</div><strong>${c.cliente||'Anônimo'}</strong></div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">DATA</div><strong>${fmtDate(c.data)}</strong></div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">ENDEREÇO</div><strong>${c.endereco||'—'}</strong></div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">PAGAMENTO</div><strong>${fmtPagamento(c.pagamento)}</strong></div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">FUNCIONÁRIO</div><strong>${c.funcionarioNome||'—'}</strong></div>
+      <div><div class="text-muted" style="font-size:.75rem;margin-bottom:3px">STATUS</div><strong>${fmtStatusEntrega(c.status)}</strong></div>
     </div>
     <div class="comanda-itens">${c.itens.map(it=>`
       <div class="comanda-item-row">
@@ -1908,52 +1914,58 @@ function verDetalheComanda(id){
         <span class="comanda-item-total">${fmt(it.preco*it.qty)}</span>
       </div>`).join('')}</div>
     <div class="comanda-total-box"><span>Total</span><strong>${fmt(c.total)}</strong></div>
+    ${c.obs?`<div style="margin-top:12px;font-size:.85rem;color:var(--muted)">Obs: ${c.obs}</div>`:''}
   `;
   document.getElementById('btnEnviarComandaExist').onclick=()=>enviarComandaWhatsAppById(id);
-  document.getElementById('btnSalvarEdicaoComanda').onclick=()=>salvarEdicaoComanda(id);
   abrirModal('modalDetalhesComanda');
 }
-function salvarEdicaoComanda(id){
-  const c=getCmdArr().find(c=>c.id===id);
-  if(!c)return;
-  const novoStatus=document.getElementById('editStatus').value;
-  const statusAnterior=c.status;
-  c.cliente=document.getElementById('editCliente').value.trim();
-  c.telefone=document.getElementById('editTelefone').value.trim();
-  c.endereco=document.getElementById('editEndereco').value.trim();
-  c.pagamento=document.getElementById('editPagamento').value;
-  c.obs=document.getElementById('editObs').value.trim();
-  c.status=novoStatus;
-  STATE.comandas[id]=c;
-  // Atualiza lançamentos se o status mudou
-  if(novoStatus!==statusAnterior){
-    const descConcluida='Comanda #'+id;
-    const descSite='Pedido #'+id;
-    getLancArr().forEach(l=>{
-      if(l.categoria==='vendas'&&(l.descricao.startsWith(descConcluida)||l.descricao.startsWith(descSite))){
-        delete STATE.lancamentos[l.id];
-      }
-    });
-    if(novoStatus==='concluida'){
-      const _lId=STATE.nextLancId++;
-      STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+id+(c.cliente?' - '+c.cliente:''),categoria:'vendas',valor:c.total,data:new Date().toISOString().split('T')[0]};
-    }
+
+/* Preenche o select de funcionários com os ativos; inclui o selecionado mesmo se inativo (comanda antiga) */
+function populateFuncionarioSelect(selectedId){
+  const sel=document.getElementById('comandaFuncionario');
+  const ativos=getFuncArr().filter(f=>f.status==='ativo');
+  let opts=['<option value="">Selecionar funcionário</option>'];
+  opts=opts.concat(ativos.map(f=>`<option value="${f.id}">${f.nome}</option>`));
+  if(selectedId && !ativos.some(f=>f.id===selectedId)){
+    const fInativo=getFuncArr().find(f=>f.id===selectedId);
+    if(fInativo)opts.push(`<option value="${fInativo.id}">${fInativo.nome} (inativo)</option>`);
   }
-  saveState();
-  renderComandas();
-  fecharModal('modalDetalhesComanda');
-  toast('Comanda #'+id+' atualizada!');
+  sel.innerHTML=opts.join('');
+  sel.value=selectedId||'';
 }
 
 /* Modal Nova Comanda */
 function abrirModalNovaComanda(){
   currentComandaItens=[];
   currentComandaEditId=null;
+  document.getElementById('modalComandaTitle').textContent='Nova Comanda';
   document.getElementById('comandaCliente').value='';
   document.getElementById('comandaTelefone').value='';
   document.getElementById('comandaEndereco').value='';
   document.getElementById('comandaObs').value='';
   document.getElementById('comandaPagamento').value='dinheiro';
+  document.getElementById('comandaStatus').value='pendente';
+  populateFuncionarioSelect(null);
+  const sel=document.getElementById('selectProdutoComanda');
+  sel.innerHTML=STATE.produtos.map(p=>`<option value="${p.id}">${p.icone} ${p.nome} — ${fmt(p.preco)}</option>`).join('');
+  document.getElementById('qtdProdutoComanda').value=1;
+  updateComandaItensUI();
+  abrirModal('modalComanda');
+}
+/* Edição de comanda existente — reaproveita o mesmo modal */
+function editarComanda(id){
+  const c=getCmdArr().find(c=>c.id===id);
+  if(!c)return;
+  currentComandaItens=c.itens.map(it=>({...it}));
+  currentComandaEditId=id;
+  document.getElementById('modalComandaTitle').textContent='Editar Comanda #'+id;
+  document.getElementById('comandaCliente').value=c.cliente||'';
+  document.getElementById('comandaTelefone').value=c.telefone||'';
+  document.getElementById('comandaEndereco').value=c.endereco||'';
+  document.getElementById('comandaObs').value=c.obs||'';
+  document.getElementById('comandaPagamento').value=c.pagamento||'dinheiro';
+  document.getElementById('comandaStatus').value=c.status||'pendente';
+  populateFuncionarioSelect(c.funcionarioId||null);
   const sel=document.getElementById('selectProdutoComanda');
   sel.innerHTML=STATE.produtos.map(p=>`<option value="${p.id}">${p.icone} ${p.nome} — ${fmt(p.preco)}</option>`).join('');
   document.getElementById('qtdProdutoComanda').value=1;
@@ -1991,22 +2003,42 @@ function removeItemComanda(i){currentComandaItens.splice(i,1);updateComandaItens
 function salvarComanda(){
   if(!currentComandaItens.length){toast('Adicione pelo menos um produto!',true);return;}
   const total=currentComandaItens.reduce((a,it)=>a+it.preco*it.qty,0);
-  const comanda={
-    id:STATE.nextComandaId++,
+  const funcSelVal=document.getElementById('comandaFuncionario').value;
+  const funcionarioId=funcSelVal?parseInt(funcSelVal):null;
+  const funcObj=funcionarioId?getFuncArr().find(f=>f.id===funcionarioId):null;
+  const dadosComuns={
     cliente:document.getElementById('comandaCliente').value.trim(),
     telefone:document.getElementById('comandaTelefone').value.trim(),
     endereco:document.getElementById('comandaEndereco').value.trim(),
     pagamento:document.getElementById('comandaPagamento').value,
     itens:[...currentComandaItens],
-    total,status:'pendente',
-    obs:document.getElementById('comandaObs').value.trim(),
-    data:new Date().toISOString().split('T')[0]
+    total,
+    status:document.getElementById('comandaStatus').value,
+    funcionarioId,
+    funcionarioNome:funcObj?funcObj.nome:'',
+    obs:document.getElementById('comandaObs').value.trim()
   };
-  STATE.comandas[comanda.id]=comanda;
-  saveState();
-  fecharModal('modalComanda');
-  toast('Comanda #'+comanda.id+' criada!');
+  if(currentComandaEditId){
+    const existente=STATE.comandas[currentComandaEditId];
+    if(!existente){toast('Comanda não encontrada.',true);return;}
+    const comanda={...existente,...dadosComuns};
+    lancarReceitaSeEntregue(comanda,existente.status);
+    STATE.comandas[comanda.id]=comanda;
+    saveState();
+    fecharModal('modalComanda');
+    toast('Comanda #'+comanda.id+' atualizada!');
+  } else {
+    const comanda={id:STATE.nextComandaId++,...dadosComuns,data:new Date().toISOString().split('T')[0]};
+    lancarReceitaSeEntregue(comanda,null);
+    STATE.comandas[comanda.id]=comanda;
+    saveState();
+    fecharModal('modalComanda');
+    toast('Comanda #'+comanda.id+' criada!');
+  }
   renderDashboard();
+  if(document.getElementById('page-comandas')?.classList.contains('active'))renderComandas();
+  if(document.getElementById('page-entregas')?.classList.contains('active'))renderControleEntregas();
+  if(document.getElementById('page-funcionarios')?.classList.contains('active'))renderFuncionarios();
 }
 function enviarComandaWhatsApp(){
   if(!currentComandaItens.length){toast('Adicione pelo menos um produto!',true);return;}
@@ -2036,9 +2068,7 @@ function enviarComandaWhatsAppById(id){
    FINANCEIRO
 ========================================================== */
 function renderFinanceiro(){
-  const inputMes=document.getElementById('filtroMesFinanceiro');
-  if(inputMes&&!inputMes.value) inputMes.value=new Date().toISOString().substring(0,7);
-  const mes=(inputMes&&inputMes.value)||new Date().toISOString().substring(0,7);
+  const mes=new Date().toISOString().substring(0,7);
   const rec=getLancArr().filter(l=>l.tipo==='receita'&&l.data&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
   const desp=getLancArr().filter(l=>l.tipo==='despesa'&&l.data&&l.data.startsWith(mes)).reduce((a,l)=>a+l.valor,0);
   const lucro=rec-desp;
@@ -2057,11 +2087,8 @@ function renderFinanceiro(){
 }
 function renderLancamentos(){
   const filtro=document.getElementById('filtroTipoLanc')?.value||'';
-  const inputMes=document.getElementById('filtroMesFinanceiro');
-  const mes=(inputMes&&inputMes.value)||'';
   let lista=getLancArr().slice().reverse();
   if(filtro)lista=lista.filter(l=>l.tipo===filtro);
-  if(mes)lista=lista.filter(l=>l.data&&l.data.startsWith(mes));
   const t=document.getElementById('lancamentosTable');
   if(!lista.length){t.innerHTML=`<tr><td colspan="6"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M512 80c0 18-14.3 34.6-38.4 48c-29.1 16.1-72.5 27.5-122.3 30.9c-3.7-1.8-7.4-3.5-11.3-5C300.6 137.4 248.2 128 192 128c-8.3 0-16.4 .2-24.5 .6l-1.1-.6C142.3 114.6 128 98 128 80c0-44.2 86-80 192-80S512 35.8 512 80zM160.7 161.1c10.2-.7 20.7-1.1 31.3-1.1c62.2 0 117.4 12.3 152.5 31.4C369.3 204.9 384 221.7 384 240c0 4-.7 7.9-2.1 11.7c-4.6 13.2-17 25.3-35 35.5c0 0 0 0 0 0c-.1 .1-.3 .1-.4 .2l0 0 0 0c-5.7 3.2-12.1 6.2-19 9c-48.8 19.5-121.9 33.3-205.5 29.8C79.4 321.5 32 302.1 32 280s47.4-41.5 128.7-118.9zM256 512c-59 0-115.3-10.7-157.4-29.4C60 465.2 32 443.3 32 416V387.7c8.7 6.1 18.7 11.6 29.9 16.6l0 0c8.3 3.7 17.5 7.1 27.2 10.2C132.4 427.3 192.4 432 256 432s123.6-4.7 166.9-17.5c9.7-3 18.9-6.5 27.2-10.2l0 0c11.2-5 21.2-10.5 29.9-16.6V416c0 27.3-28 49.2-67.6 66.6C403.3 501.3 347 512 256 512z"/></svg><p>Nenhum lançamento</p></div></td></tr>`;return;}
   t.innerHTML=`<thead><tr><th>#</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Data</th><th>Ações</th></tr></thead>
@@ -2107,26 +2134,24 @@ function removerLancamento(id){
   delete STATE.lancamentos[id];
   saveState();
   renderFinanceiro();
-}
-function zerarLancamentosAntigos(){
-  const mesAtual=new Date().toISOString().substring(0,7); // "YYYY-MM"
-  const antigos=Object.keys(STATE.lancamentos).filter(k=>{
-    const l=STATE.lancamentos[k];
-    return !l.data||!l.data.startsWith(mesAtual);
-  });
-  if(antigos.length===0){toast('Nenhum lançamento de meses anteriores encontrado.');return;}
-  if(!confirm('Apagar '+antigos.length+' lançamento(s) de meses anteriores a '+mesAtual+'?\n\nEsta ação não pode ser desfeita.')){return;}
-  antigos.forEach(k=>delete STATE.lancamentos[k]);
-  saveState();
-  renderFinanceiro();
-  toast('✓ '+antigos.length+' lançamento(s) antigo(s) removido(s).');
-
   toast('Lançamento removido.');
 }
 
 /* ==========================================================
    FUNCIONÁRIOS
 ========================================================== */
+/* Calcula entregas de um funcionário a partir das comandas — nunca via contador manual.
+   dataIni/dataFim opcionais, no formato 'YYYY-MM-DD', para filtrar por período. */
+function calcFuncionarioEntregas(funcId,dataIni,dataFim){
+  let cmds=getCmdArr().filter(c=>c.funcionarioId===funcId);
+  if(dataIni)cmds=cmds.filter(c=>c.data>=dataIni);
+  if(dataFim)cmds=cmds.filter(c=>c.data<=dataFim);
+  const emEntrega=cmds.filter(c=>statusEmAndamento(c.status)).length;
+  const entreguesCmds=cmds.filter(c=>statusConcluiu(c.status));
+  const canceladas=cmds.filter(c=>c.status==='cancelada').length;
+  const valorMovimentado=entreguesCmds.reduce((a,c)=>a+c.total,0);
+  return{emEntrega,entregues:entreguesCmds.length,canceladas,total:cmds.length,valorMovimentado};
+}
 function renderFuncionarios(lista=null){
   const data=lista||getFuncArr();
   const ativos=data.filter(f=>f.status==='ativo');
@@ -2141,22 +2166,69 @@ function renderFuncionarios(lista=null){
     <div class="metric-label">${m.label}</div>
   </div>`).join('');
   const t=document.getElementById('funcTable');
-  if(!data.length){t.innerHTML=`<tr><td colspan="7"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H144C64.5 192 0 256.5 0 336v-37.3zm640 0C640 256.5 575.5 192 496 192H458.7c-15.9 0-31 3.4-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 38.2-16.8 72.5-43.3 96c.2 0 .4 0 .7 0H618.7c11.8 0 21.3-9.6 21.3-21.3V298.7zM320 176a112 112 0 1 1 0 224 112 112 0 1 1 0-224zm-5.3 336H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H325.3z"/></svg><p>Nenhum funcionário cadastrado</p></div></td></tr>`;return;}
-  t.innerHTML=`<thead><tr><th>Nome</th><th>Cargo</th><th>Salário</th><th>Início</th><th>Telefone</th><th>Status</th><th>Ações</th></tr></thead>
-  <tbody>${data.map(f=>`<tr>
+  if(!data.length){t.innerHTML=`<tr><td colspan="9"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H144C64.5 192 0 256.5 0 336v-37.3zm640 0C640 256.5 575.5 192 496 192H458.7c-15.9 0-31 3.4-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 38.2-16.8 72.5-43.3 96c.2 0 .4 0 .7 0H618.7c11.8 0 21.3-9.6 21.3-21.3V298.7zM320 176a112 112 0 1 1 0 224 112 112 0 1 1 0-224zm-5.3 336H192c-17.7 0-32 14.3-32 32s14.3 32 32 32H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H325.3z"/></svg><p>Nenhum funcionário cadastrado</p></div></td></tr>`;return;}
+  t.innerHTML=`<thead><tr><th>Nome</th><th>Cargo</th><th>Salário</th><th>Início</th><th>Telefone</th><th>Status</th><th>Entregas</th><th>Valor Movimentado</th><th>Ações</th></tr></thead>
+  <tbody>${data.map(f=>{
+    const st=calcFuncionarioEntregas(f.id);
+    return `<tr>
     <td><strong>${f.nome}</strong>${f.obs?`<br><span style="font-size:.75rem;color:var(--muted)">${f.obs}</span>`:''}</td>
     <td>${f.cargo}</td>
     <td>${fmt(f.salario)}</td>
     <td>${fmtDate(f.dataInicio)}</td>
     <td>${f.telefone||'—'}</td>
     <td><span class="badge badge-${f.status}">${f.status}</span></td>
+    <td style="white-space:nowrap;font-size:.78rem">
+      <span title="Em andamento" style="color:var(--accent)">${st.emEntrega} em rota</span> ·
+      <span title="Entregues" style="color:var(--green)">${st.entregues} entregues</span> ·
+      <span title="Canceladas" style="color:var(--red)">${st.canceladas} canc.</span>
+    </td>
+    <td>${fmt(st.valorMovimentado)}</td>
     <td>
       <div style="display:flex;gap:6px">
         <button class="btn btn-ghost btn-sm" onclick="editarFuncionario(${f.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg></button>
         <button class="btn btn-danger btn-sm" onclick="removerFuncionario(${f.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button>
       </div>
     </td>
-  </tr>`).join('')}</tbody>`;
+  </tr>`;}).join('')}</tbody>`;
+}
+/* ==========================================================
+   CONTROLE DE ENTREGAS
+========================================================== */
+let entregasPeriodoAtivo='hoje';
+function ymd(d){return d.toISOString().split('T')[0];}
+function setPeriodoEntregas(periodo){
+  entregasPeriodoAtivo=periodo;
+  document.querySelectorAll('.periodo-btn').forEach(b=>b.classList.toggle('active',b.dataset.periodo===periodo));
+  renderControleEntregas();
+}
+function getRangeEntregas(){
+  const hoje=new Date();
+  const iniInput=document.getElementById('entregasDataIni');
+  const fimInput=document.getElementById('entregasDataFim');
+  if(entregasPeriodoAtivo==='hoje'){const s=ymd(hoje);return{ini:s,fim:s};}
+  if(entregasPeriodoAtivo==='ontem'){const ont=new Date(hoje);ont.setDate(ont.getDate()-1);const s=ymd(ont);return{ini:s,fim:s};}
+  if(entregasPeriodoAtivo==='7dias'){const ini=new Date(hoje);ini.setDate(ini.getDate()-6);return{ini:ymd(ini),fim:ymd(hoje)};}
+  if(entregasPeriodoAtivo==='mes'){const ini=new Date(hoje.getFullYear(),hoje.getMonth(),1);return{ini:ymd(ini),fim:ymd(hoje)};}
+  // personalizado
+  return{ini:iniInput.value||null,fim:fimInput.value||null};
+}
+function renderControleEntregas(){
+  const t=document.getElementById('entregasTable');
+  if(!t)return;
+  const {ini,fim}=getRangeEntregas();
+  const funcs=getFuncArr();
+  if(!funcs.length){t.innerHTML=`<tr><td><div class="empty-state"><p>Nenhum funcionário cadastrado</p></div></td></tr>`;return;}
+  const linhas=funcs.map(f=>({f,st:calcFuncionarioEntregas(f.id,ini,fim)}));
+  t.innerHTML=`<thead><tr><th>Funcionário</th><th>Em Entrega</th><th>Entregues</th><th>Canceladas</th><th>Total</th><th>Valor Movimentado</th></tr></thead>
+  <tbody>${linhas.map(({f,st})=>`
+    <tr>
+      <td><strong>${f.nome}</strong>${f.status!=='ativo'?' <span class="badge badge-inativo" style="font-size:.65rem">inativo</span>':''}</td>
+      <td>${st.emEntrega}</td>
+      <td>${st.entregues}</td>
+      <td>${st.canceladas}</td>
+      <td>${st.total}</td>
+      <td>${fmt(st.valorMovimentado)}</td>
+    </tr>`).join('')}</tbody>`;
 }
 function filtrarFuncionarios(q){
   const lista=getFuncArr().filter(f=>f.nome.toLowerCase().includes(q.toLowerCase())||f.cargo.toLowerCase().includes(q.toLowerCase()));
@@ -2367,7 +2439,7 @@ function salvarConfig(tipo){
 }
 function exportarDados(){
   const blob=new Blob([JSON.stringify(STATE,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='aquagas_backup.json';a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sobreaguas_backup.json';a.click();
   toast('Dados exportados!');
 }
 function limparDemoData(){
@@ -2645,7 +2717,7 @@ const SITE_LAYOUT_DEFAULTS = {
   sobre1Num: '10+', sobre1Leg: 'Anos de mercado',
   sobre2Num: '5k+', sobre2Leg: 'Clientes satisfeitos',
   sobre3Num: '50k+', sobre3Leg: 'Entregas realizadas',
-  footerCopy: '© 2025 AquaGás Distribuidora — Todos os direitos reservados',
+  footerCopy: '© 2025 SobreÁguas Distribuidora — Todos os direitos reservados',
   footerSocial: true,
   loader: true, scrollReveal: true, particulas: true, parallax: true,
 };
@@ -2931,6 +3003,5 @@ function faIcon(cls, style) {
 ============================================================ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="RELATORIO_JS/relatorio.js"></script>
-<script src="RELATORIO-SEMANAL/relatorio-semanal.js"></script>
 </body>
 </html>

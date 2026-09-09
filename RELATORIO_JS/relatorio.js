@@ -22,11 +22,6 @@
   /* ============================================================
      UTILITÁRIOS
   ============================================================ */
-  function fmtDataBR(iso) {
-    if (!iso) return '';
-    const [y, m, d] = iso.split('-');
-    return d + '/' + m + '/' + y;
-  }
   function hoje() {
     return new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
   }
@@ -177,10 +172,7 @@
             </div>
             <div>
               <h2>Fechamento de Caixa</h2>
-              <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
-                <input type="date" id="relatorioDataInput"
-                  style="background:var(--card,#1a1d2e);border:1px solid var(--border,#2a2d3e);border-radius:8px;padding:4px 10px;color:var(--text,#fff);font-size:.85rem;font-family:inherit;outline:none;cursor:pointer">
-              </div>
+              <p id="relatorioDataLabel">Carregando...</p>
             </div>
           </div>
           <button class="relatorio-btn-fechar" id="relBtnFechar" title="Fechar">
@@ -248,7 +240,7 @@
     const loading   = document.getElementById('relatorioLoading');
     const conteudo  = document.getElementById('relatorioConteudo');
     const footer    = document.getElementById('relatorioFooter');
-    // dataLabel removido — substituído pelo input de data
+    const dataLabel = document.getElementById('relatorioDataLabel');
     const btnPDF    = document.getElementById('relBtnGerarPDF');
     const btnApagar = document.getElementById('relBtnApagar');
 
@@ -262,40 +254,11 @@
     overlay.classList.add('aberto');
     document.body.style.overflow = 'hidden';
 
-    // Configura o seletor de data com hoje por padrão
-    const inputData = document.getElementById('relatorioDataInput');
-    inputData.value = hoje();
-    inputData.addEventListener('change', async function() {
-      loading.style.display  = 'block';
-      conteudo.style.display = 'none';
-      footer.style.display   = 'none';
-      btnApagar.style.display = 'none';
-      btnPDF.disabled = true;
-      ocultarAlerta();
-      dadosDia = null;
-      try {
-        dadosDia = await carregarDadosDia(inputData.value);
-      } catch(e) {
-        loading.style.display = 'none';
-        conteudo.style.display = 'block';
-        conteudo.innerHTML = '<div class="relatorio-vazio"><p>Erro ao carregar dados.<br><small style="color:#7a8299">'+e.message+'</small></p></div>';
-        footer.style.display = 'flex';
-        return;
-      }
-      loading.style.display  = 'none';
-      conteudo.style.display = 'block';
-      footer.style.display   = 'flex';
-      renderizarConteudo(dadosDia);
-      btnPDF.disabled = false;
-      if(dadosDia.totalPedidos > 0 || dadosDia.totalLancamentos > 0){
-        btnApagar.style.display = 'inline-flex';
-        btnApagar.disabled = false;
-      }
-    });
+    dataLabel.textContent = 'Data: ' + hojeFormatado();
 
     // Carregar dados
     try {
-      dadosDia = await carregarDadosDia(inputData.value);
+      dadosDia = await carregarDadosDia();
     } catch (e) {
       loading.style.display = 'none';
       conteudo.style.display = 'block';
@@ -334,15 +297,15 @@
   /* ============================================================
      CARREGAR DADOS DO DIA
   ============================================================ */
-  async function carregarDadosDia(dataSelecionada) {
-    const dataHoje   = dataSelecionada || hoje();
+  async function carregarDadosDia() {
+    const dataHoje   = hoje();
     const db         = await lerPath(DB_PATH);
 
     const comandas     = db && db.comandas     ? Object.values(db.comandas)     : [];
     const lancamentos  = db && db.lancamentos  ? Object.values(db.lancamentos)  : [];
-    const funcionariosCadastrados = db && db.funcionarios ? Object.values(db.funcionarios) : [];
+    const funcionarios = db && db.funcionarios ? Object.values(db.funcionarios) : [];
 
-    // Filtrar pela data selecionada
+    // Filtrar pelo dia atual
     const comandasHoje    = comandas.filter(c => c.data === dataHoje);
     const lancamentosHoje = lancamentos.filter(l => l.data === dataHoje);
 
@@ -367,9 +330,9 @@
     const pedidosPendentes  = comandasHoje.filter(c => c.status === 'pendente').length;
     const pedidosCancelados = comandasHoje.filter(c => c.status === 'cancelada').length;
 
-    // Produtos mais vendidos (excluindo canceladas)
+    // Produtos mais vendidos
     const mapaProdutos = {};
-    comandasHoje.filter(c => c.status !== 'cancelada').forEach(c => {
+    comandasHoje.forEach(c => {
       if (!c.itens) return;
       const itens = Array.isArray(c.itens) ? c.itens : Object.values(c.itens);
       itens.forEach(item => {
@@ -385,16 +348,6 @@
     const produtosVendidos = Object.values(mapaProdutos)
       .sort((a, b) => b.quantidade - a.quantidade);
 
-    // Funcionários pagos hoje: lançamentos tipo 'despesa' + categoria 'salarios' no dia
-    // O ADM salva com categoria='salarios' quando é pagamento de funcionário
-    const funcionariosPagosHoje = lancamentosHoje
-      .filter(l => l.tipo === 'despesa' && l.categoria === 'salarios')
-      .map(l => ({
-        nome:  l.descricao || 'Funcionário',
-        valor: Number(l.valor) || 0,
-        data:  l.data || dataHoje,
-      }));
-
     return {
       dataHoje,
       totalVendas,
@@ -406,7 +359,7 @@
       pedidosPendentes,
       pedidosCancelados,
       produtosVendidos,
-      funcionarios: funcionariosPagosHoje,
+      funcionarios,
       lancamentosHoje,
       totalLancamentos: lancamentosHoje.length,
     };
@@ -422,16 +375,15 @@
       el.innerHTML =
         '<div class="relatorio-vazio">' +
           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" width="48" height="48"><path d="M0 112.5V422.3c0 18 10.1 35 27 41.3c87 32.5 174 10.3 261-11.9c79.8-20.3 159.6-40.7 239.3-18.9c23 6.3 48.7-9.5 48.7-33.4V89.7c0-18-10.1-35-27-41.3C462 15.9 375 38.1 288 60.3C208.2 80.6 128.4 100.9 48.7 79.1C25.6 72.8 0 88.6 0 112.5zM288 352c-44.2 0-80-43-80-96s35.8-96 80-96s80 43 80 96s-35.8 96-80 96zM64 352c0-17.7 14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32zm384 32c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/></svg>' +
-          '<p>Nenhum movimento registrado nesta data.</p>' +
-          '<p style="font-size:0.78rem;margin-top:4px">Data: ' + fmtDataBR(d.dataHoje) + '</p>' +
+          '<p>Nenhum movimento registrado hoje.</p>' +
+          '<p style="font-size:0.78rem;margin-top:4px">Data: ' + hojeFormatado() + '</p>' +
         '</div>';
       return;
     }
 
     // ---- Cards de métricas ----
     let html = '<div class="relatorio-metricas">';
-    const totalUnidades = d.produtosVendidos.reduce((s, p) => s + p.quantidade, 0);
-    html += metricaCard('Total de Vendas', totalUnidades + ' unid.', 'verde', iconeCoin());
+    html += metricaCard('Total de Vendas',   moeda(d.totalVendas),   'verde',   iconeCoin());
     html += metricaCard('Entradas',          moeda(d.totalEntrada),  'azul',    iconeUp());
     html += metricaCard('Saídas / Despesas', moeda(d.totalSaida),    'vermelho',iconeDown());
     html += metricaCard('Saldo do Dia',      moeda(d.saldoDia),      d.saldoDia >= 0 ? 'verde' : 'vermelho', iconeWallet());
@@ -454,12 +406,14 @@
           '<thead><tr>' +
             '<th>Produto</th>' +
             '<th style="text-align:center">Qtd</th>' +
+            '<th>Total</th>' +
           '</tr></thead><tbody>';
       d.produtosVendidos.forEach(p => {
         tabela +=
           '<tr>' +
             '<td>' + (p.icone ? p.icone + ' ' : '') + escHtml(p.nome) + '</td>' +
             '<td style="text-align:center"><span class="badge-qty">' + p.quantidade + 'x</span></td>' +
+            '<td class="valor-verde">' + moeda(p.total) + '</td>' +
           '</tr>';
       });
       tabela += '</tbody></table>';
@@ -488,31 +442,27 @@
       html += secao('💰 Lançamentos do Dia', tabela);
     }
 
-    // ---- Funcionários pagos hoje (categoria = salarios) ----
+    // ---- Funcionários ----
     if (d.funcionarios.length > 0) {
       let lista = '<div class="rel-func-lista">';
       d.funcionarios.forEach(f => {
-        const inicial = (f.nome || 'F')[0].toUpperCase();
+        const inicial = (f.nome || f.name || 'F')[0].toUpperCase();
         lista +=
           '<div class="rel-func-item">' +
             '<div class="rel-func-avatar">' + inicial + '</div>' +
-            '<div style="display:flex;flex-direction:column;gap:2px;flex:1">' +
-              '<span style="font-weight:600">' + escHtml(f.nome) + '</span>' +
-              '<span style="font-size:.75rem;color:var(--muted)">Pago em: ' + escHtml(f.data) + '</span>' +
-            '</div>' +
-            '<span style="color:#ff4d6d;font-weight:700;margin-left:auto">' + moeda(f.valor) + '</span>' +
+            '<span>' + escHtml(f.nome || f.name || 'Funcionário') + '</span>' +
+            (f.cargo ? '<span style="color:#7a8299;font-size:.8rem;margin-left:auto">' + escHtml(f.cargo) + '</span>' : '') +
           '</div>';
       });
       lista += '</div>';
-      html += secao('💳 Funcionários Pagos Hoje', lista);
+      html += secao('👥 Equipe', lista);
     }
 
     // ---- Resumo financeiro final ----
     html += secao('🏦 Resumo Financeiro',
       '<div class="rel-resumo-lista">' +
-        linhaResumo('Total de Vendas',    moeda(d.totalVendas)) +
-        linhaResumo('Outras Entradas',    moeda(d.totalEntrada)) +
-        linhaResumo('Total Despesas',     moeda(d.totalSaida)) +
+        linhaResumo('Total Receitas',  moeda(d.totalEntrada)) +
+        linhaResumo('Total Despesas',  moeda(d.totalSaida)) +
         linhaTotalResumo('Saldo Final do Dia', moeda(d.saldoDia)) +
       '</div>'
     );
@@ -603,7 +553,7 @@
 
     doc.setFontSize(9);
     doc.setTextColor(140, 150, 170);
-    const _dataRef = document.getElementById('relatorioDataInput')?.value; doc.text('Emitido em: ' + agora() + '   |   Referência: ' + (_dataRef ? fmtDataBR(_dataRef) : hojeFormatado()), L, y);
+    doc.text('Emitido em: ' + agora() + '   |   Referência: ' + hojeFormatado(), L, y);
 
     y = 48;
 
@@ -623,7 +573,7 @@
 
     // Cards de métricas (2 colunas)
     const metricas = [
-      { label: 'Total de Vendas', valor: d.produtosVendidos.reduce((s,p) => s+p.quantidade, 0) + ' unid.', cor: [0, 180, 100] },
+      { label: 'Total de Vendas',  valor: moeda(d.totalVendas),   cor: [0, 180, 100]  },
       { label: 'Total Entradas',   valor: moeda(d.totalEntrada),  cor: [0, 150, 220]  },
       { label: 'Total Saídas',     valor: moeda(d.totalSaida),    cor: [220, 60, 80]  },
       { label: 'Saldo do Dia',     valor: moeda(d.saldoDia),      cor: d.saldoDia >= 0 ? [0,180,100] : [220,60,80] },
@@ -687,6 +637,7 @@
       doc.setTextColor(80, 90, 110);
       doc.text('PRODUTO', L + 2, y + 1);
       doc.text('QTD', L + W * 0.6, y + 1);
+      doc.text('TOTAL', L + W, y + 1, { align: 'right' });
       nl(7);
 
       d.produtosVendidos.forEach((p, idx) => {
@@ -702,6 +653,8 @@
         doc.setFont('helvetica', 'bold');
         doc.setTextColor(0, 150, 220);
         doc.text(p.quantidade + 'x', L + W * 0.6, y + 1);
+        doc.setTextColor(0, 160, 90);
+        doc.text(moeda(p.total), L + W, y + 1, { align: 'right' });
         nl(7);
       });
       linha();
@@ -749,43 +702,25 @@
       linha();
     }
 
-    /* ---------- FUNCIONÁRIOS PAGOS ---------- */
+    /* ---------- EQUIPE ---------- */
     if (d.funcionarios.length > 0) {
       if (y > 240) { doc.addPage(); y = 20; }
 
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(11);
       doc.setTextColor(30, 40, 60);
-      doc.text('FUNCIONÁRIOS PAGOS', L, y);
+      doc.text('EQUIPE', L, y);
       nl(7);
 
-      // Cabeçalho
-      doc.setFillColor(230, 232, 240);
-      doc.rect(L, y - 4, W, 8, 'F');
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8.5);
-      doc.setTextColor(80, 90, 110);
-      doc.text('FUNCIONÁRIO / DESCRIÇÃO', L + 2, y + 1);
-      doc.text('DATA', L + W * 0.65, y + 1);
-      doc.text('VALOR PAGO', L + W, y + 1, { align: 'right' });
-      nl(7);
-
-      d.funcionarios.forEach((f, idx) => {
+      d.funcionarios.forEach(f => {
         if (y > 270) { doc.addPage(); y = 20; }
-        if (idx % 2 === 0) {
-          doc.setFillColor(248, 249, 253);
-          doc.rect(L, y - 3, W, 7, 'F');
-        }
         doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9);
-        doc.setTextColor(30, 40, 60);
-        doc.text((f.nome || 'Funcionário').slice(0, 35), L + 2, y + 1);
-        doc.setTextColor(100, 110, 130);
-        doc.text(f.data || '', L + W * 0.65, y + 1);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(220, 60, 80);
-        doc.text(moeda(f.valor), L + W, y + 1, { align: 'right' });
-        nl(7);
+        doc.setFontSize(9.5);
+        doc.setTextColor(40, 50, 70);
+        const nome  = f.nome || f.name || 'Funcionário';
+        const cargo = f.cargo ? ' — ' + f.cargo : '';
+        doc.text('• ' + nome + cargo, L + 2, y);
+        nl(6);
       });
       linha();
     }
@@ -798,7 +733,7 @@
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     doc.setTextColor(180, 190, 210);
-    const _dataRef2 = document.getElementById('relatorioDataInput')?.value; doc.text('FECHAMENTO DO CAIXA — ' + (_dataRef2 ? fmtDataBR(_dataRef2) : hojeFormatado()), L + 2, y + 3);
+    doc.text('FECHAMENTO DO CAIXA — ' + hojeFormatado(), L + 2, y + 3);
     nl(9);
     doc.setFontSize(14);
     doc.setTextColor(255, 210, 63);
@@ -835,19 +770,17 @@
      CONFIRMAR E APAGAR DADOS DO DIA
   ============================================================ */
   async function confirmarApagar() {
-    const inputData = document.getElementById('relatorioDataInput');
-    const dataHoje = (inputData && inputData.value) ? inputData.value : hoje();
+    const dataHoje = hoje();
     const confirmou = window.confirm(
-      '⚠️ ATENÇÃO — Apagar dados de ' + fmtDataBR(document.getElementById("relatorioDataInput")?.value || hoje()) + '\n\n' +
+      '⚠️ ATENÇÃO — Apagar dados de ' + hojeFormatado() + '\n\n' +
       'Esta ação irá apagar:\n' +
       '  • Todas as comandas do dia\n' +
-      '  • Todos os lançamentos financeiros do dia\n' +
-      '  • (Dashboard será zerado automaticamente)\n\n' +
+      '  • Todos os lançamentos do dia\n\n' +
       'NÃO serão apagados:\n' +
       '  • Produtos cadastrados\n' +
-      '  • Funcionários cadastrados\n' +
+      '  • Funcionários\n' +
       '  • Configurações do sistema\n\n' +
-      '⚠️ Gere o PDF antes de apagar!\n\n' +
+      'Recomendamos gerar o PDF antes de apagar.\n\n' +
       'Deseja continuar?'
     );
     if (!confirmou) return;
@@ -889,7 +822,7 @@
         conteudo.innerHTML =
           '<div class="relatorio-vazio">' +
             '<p style="color:#00e5a0;font-size:1rem">✓ Caixa fechado com sucesso!</p>' +
-            '<p style="font-size:.82rem;margin-top:6px;color:#7a8299">Os dados de ' + fmtDataBR(document.getElementById("relatorioDataInput")?.value || hoje()) + ' foram removidos.</p>' +
+            '<p style="font-size:.82rem;margin-top:6px;color:#7a8299">Os dados de ' + hojeFormatado() + ' foram removidos.</p>' +
           '</div>';
       }
       if (btnApagar) { btnApagar.style.display = 'none'; }
