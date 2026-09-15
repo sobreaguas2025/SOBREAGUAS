@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SobreÁguas — Painel Administrativo</title>
 <link rel="stylesheet" href="RELATORIO_STYLE/relatorio.css" />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 /* ============================================================
    RESET & TOKENS
@@ -73,9 +73,9 @@ body.no-anim *{transition:none!important;animation:none!important}
 .login-wrap{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px 40px;width:min(420px,90vw);box-shadow:var(--shadow)}
 .login-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px;justify-content:center}
 .login-logo i{font-size:2rem;color:var(--accent)}
-.login-logo span{font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text)}
+.login-logo span{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text)}
 .login-logo strong{color:var(--accent)}
-.login-wrap h2{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:6px;text-align:center}
+.login-wrap h2{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:6px;text-align:center}
 .login-wrap p{color:var(--muted);font-size:.875rem;text-align:center;margin-bottom:28px}
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-size:.8rem;font-weight:500;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
@@ -99,7 +99,7 @@ body.no-anim *{transition:none!important;animation:none!important}
 .sidebar{position:fixed;top:0;left:0;height:100vh;width:240px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;transition:.3s}
 .sidebar-logo{padding:24px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
 .sidebar-logo i{font-size:1.5rem;color:var(--accent)}
-.sidebar-logo span{font-family:'DM Sans',sans-serif;font-weight:800;font-size:1.1rem}
+.sidebar-logo span{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem}
 .sidebar-logo strong{color:var(--accent)}
 nav.sidenav{flex:1;padding:12px 8px;overflow-y:auto}
 .nav-section{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding:10px 12px 4px}
@@ -120,7 +120,7 @@ nav.sidenav{flex:1;padding:12px 8px;overflow-y:auto}
 body:not(:has(.sidebar)) .main-content,
 .sidebar[style*="display: none"] ~ .main-content{margin-left:0}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-.topbar-title{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:700}
+.topbar-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700}
 .topbar-right{display:flex;align-items:center;gap:12px}
 .btn-menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.2rem;cursor:pointer;padding:6px}
 .page{padding:28px;display:none}
@@ -138,7 +138,7 @@ body:not(:has(.sidebar)) .main-content,
 .metric-card .metric-change{font-size:.78rem;margin-top:8px}
 .metric-card .metric-change.up{color:var(--green)}
 .metric-card .metric-change.down{color:var(--red)}
-.section-title{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .section-title i{color:var(--accent)}
 
 /* ============================================================
@@ -146,7 +146,7 @@ body:not(:has(.sidebar)) .main-content,
 ============================================================ */
 .table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .table-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.table-header h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700}
+.table-header h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700}
 table{width:100%;border-collapse:collapse}
 th{padding:11px 16px;text-align:left;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-bottom:1px solid var(--border);background:var(--surface)}
 td{padding:13px 16px;font-size:.875rem;border-bottom:1px solid rgba(37,42,56,.5)}
@@ -187,7 +187,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .modal-overlay.open{display:flex}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:min(560px,100%);max-height:90vh;overflow-y:auto;box-shadow:var(--shadow)}
 .modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:2}
-.modal-header h3{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.1rem}
+.modal-header h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem}
 .modal-body{padding:24px}
 .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:var(--surface)}
 .btn-close{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer;padding:4px;border-radius:6px;transition:.15s}
@@ -201,7 +201,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
 .produto-adm-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;position:relative;transition:.2s}
 .produto-adm-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .produto-adm-icon{font-size:2.5rem;margin-bottom:10px;line-height:1}
-.produto-adm-nome{font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:4px}
+.produto-adm-nome{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:4px}
 .produto-adm-preco{color:var(--accent);font-weight:700;font-size:1.1rem;margin-bottom:4px}
 .produto-adm-desc{font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.4}
 .produto-adm-actions{display:flex;gap:8px}
@@ -250,7 +250,7 @@ tr:hover td{background:rgba(255,255,255,.02)}
    SETTINGS
 ============================================================ */
 .settings-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px}
-.settings-section h3{font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-size:1rem}
+.settings-section h3{font-family:'Syne',sans-serif;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;font-size:1rem}
 .settings-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)}
 .settings-row:last-child{border-bottom:none}
 .settings-row label{font-size:.9rem;color:var(--text)}
@@ -563,7 +563,7 @@ select option{background:var(--card)}
         <div class="form-row">
           <div class="form-group">
             <label>Nome da Empresa</label>
-            <input type="text" id="cfgNomeEmpresa" placeholder="SobreÁguas Distribuidora"/>
+            <input type="text" id="cfgNomeEmpresa" placeholder="AquaGás Distribuidora"/>
           </div>
           <div class="form-group">
             <label>Prazo de Entrega</label>
@@ -576,7 +576,7 @@ select option{background:var(--card)}
         <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent3)"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.7 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg> Segurança</h3>
         <div class="form-group">
           <label>E-mail do Administrador</label>
-          <input type="email" id="cfgEmail" placeholder="admin@sobreaguas.com"/>
+          <input type="email" id="cfgEmail" placeholder="admin@aquagas.com"/>
         </div>
         <div class="form-row">
           <div class="form-group">
@@ -615,7 +615,7 @@ select option{background:var(--card)}
         <span style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Preview ao vivo</span>
         <div id="previewPill" style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:8px 18px;gap:12px">
           <div id="previewDot" style="width:14px;height:14px;border-radius:50%;background:var(--accent)"></div>
-          <span id="previewNome" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas ADM</span>
+          <span id="previewNome" style="font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas ADM</span>
           <span id="previewFonte" style="font-size:.8rem;color:var(--muted)">Tema escuro · DM Sans</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px">
@@ -799,7 +799,7 @@ select option{background:var(--card)}
         <span style="font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em">Preview ao vivo</span>
         <div style="display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:40px;padding:8px 18px">
           <div id="sitePreviewDot" style="width:14px;height:14px;border-radius:50%;background:#00b4ff"></div>
-          <span id="sitePreviewNome" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas</span>
+          <span id="sitePreviewNome" style="font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem">SobreÁguas</span>
           <span id="sitePreviewTheme" style="font-size:.8rem;color:var(--muted)">Tema padrão · Exo 2</span>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px">
@@ -1073,7 +1073,7 @@ select option{background:var(--card)}
           <h3>🗂️ Rodapé</h3>
           <div class="form-group">
             <label>Texto de copyright</label>
-            <input type="text" id="siteFooterCopy" placeholder="© 2025 SobreÁguas Distribuidora — Todos os direitos reservados"/>
+            <input type="text" id="siteFooterCopy" placeholder="© 2025 AquaGás Distribuidora — Todos os direitos reservados"/>
           </div>
           <div class="settings-row">
             <div><label>Mostrar ícones sociais no rodapé</label></div>
@@ -1471,7 +1471,7 @@ function fbOnValue(path, cb){
 ---------------------------------------------------------- */
 function getDefaultState(){
   return {
-    config:{ whatsapp:'5583996231032', instagram:'https://instagram.com/sobreaguas', nomeEmpresa:'SobreÁguas Distribuidora', prazoEntrega:'30 a 60 minutos' },
+    config:{ whatsapp:'5583996231032', instagram:'https://instagram.com/aquagas', nomeEmpresa:'AquaGás Distribuidora', prazoEntrega:'30 a 60 minutos' },
     produtos:[],
     nextProdId:1,
     comandas:{},
@@ -1855,6 +1855,7 @@ function renderComandasTable(tableId,data,mini){
           <button class="btn btn-ghost btn-sm" onclick="editarComanda(${c.id})" title="Editar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg></button>
           <button class="btn btn-ghost btn-sm" onclick="verDetalheComanda(${c.id})" title="Ver detalhes"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg></button>
           <button class="btn btn-danger btn-sm" onclick="mudarStatusComanda(${c.id},'cancelada')" title="Cancelar"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+          <button class="btn btn-danger btn-sm" onclick="apagarComanda(${c.id})" title="Apagar definitivamente"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button>
         </div>
       </td>`:''}
     </tr>`).join('')}</tbody>`;
@@ -1877,7 +1878,7 @@ function filtrarComandas(q){
 function lancarReceitaSeEntregue(comanda,statusAnterior){
   if(statusConcluiu(comanda.status) && !statusConcluiu(statusAnterior) && !comanda._faturado){
     const _lId=STATE.nextLancId++;
-    STATE.lancamentos[_lId]={id:_lId,tipo:'receita',descricao:'Comanda #'+comanda.id+(comanda.cliente?' - '+comanda.cliente:''),categoria:'vendas',valor:comanda.total,data:new Date().toISOString().split('T')[0]};
+    STATE.lancamentos[_lId]={id:_lId,comandaId:comanda.id,tipo:'receita',descricao:'Comanda #'+comanda.id+(comanda.cliente?' - '+comanda.cliente:''),categoria:'vendas',valor:comanda.total,data:new Date().toISOString().split('T')[0]};
     comanda._faturado=true;
   }
 }
@@ -1893,6 +1894,33 @@ function mudarStatusComanda(id,status){
   if(document.getElementById('page-entregas')?.classList.contains('active'))renderControleEntregas();
   if(document.getElementById('page-funcionarios')?.classList.contains('active'))renderFuncionarios();
   toast('Status atualizado: '+fmtStatusEntrega(status));
+}
+/* Apaga a comanda definitivamente (remove do banco de dados).
+   Diferente de "Cancelar" (que só muda o status), isso some com o registro
+   e também remove o lançamento de receita gerado por ela no Financeiro
+   (evitando que o valor continue contando no caixa).
+   Disponível apenas neste painel administrativo. */
+function apagarComanda(id){
+  const c=getCmdArr().find(c=>c.id===id);
+  if(!c)return;
+  const avisoFinanceiro=c._faturado?' O lançamento de receita gerado por ela no Financeiro também será removido.':'';
+  if(!confirm('Apagar definitivamente a comanda #'+id+'?'+avisoFinanceiro+' Essa ação não pode ser desfeita.'))return;
+
+  // Remove lançamento(s) de receita vinculados a esta comanda no Financeiro
+  const padraoAntigo=new RegExp('^Comanda #'+id+'(\\D|$)');
+  getLancArr().forEach(l=>{
+    const vinculado = l.comandaId===id || (l.comandaId===undefined && padraoAntigo.test(l.descricao||''));
+    if(vinculado) delete STATE.lancamentos[l.id];
+  });
+
+  delete STATE.comandas[id];
+  saveState();
+  renderComandas();
+  if(document.getElementById('page-dashboard')?.classList.contains('active'))renderDashboard();
+  if(document.getElementById('page-entregas')?.classList.contains('active'))renderControleEntregas();
+  if(document.getElementById('page-funcionarios')?.classList.contains('active'))renderFuncionarios();
+  if(document.getElementById('page-financeiro')?.classList.contains('active')&&typeof renderFinanceiro==='function')renderFinanceiro();
+  toast('Comanda #'+id+' apagada'+(avisoFinanceiro?' e lançamento removido do Financeiro.':'.'));
 }
 function verDetalheComanda(id){
   const c=getCmdArr().find(c=>c.id===id);
@@ -2149,8 +2177,14 @@ function calcFuncionarioEntregas(funcId,dataIni,dataFim){
   const emEntrega=cmds.filter(c=>statusEmAndamento(c.status)).length;
   const entreguesCmds=cmds.filter(c=>statusConcluiu(c.status));
   const canceladas=cmds.filter(c=>c.status==='cancelada').length;
+  const somaPagto=(tipo)=>entreguesCmds.filter(c=>c.pagamento===tipo).reduce((a,c)=>a+c.total,0);
+  const valorDinheiro=somaPagto('dinheiro');
+  const valorPix=somaPagto('pix');
+  const valorDebito=somaPagto('cartao_debito');
+  const valorCredito=somaPagto('cartao_credito');
+  const valorOutros=somaPagto('fiado')+somaPagto('a_confirmar');
   const valorMovimentado=entreguesCmds.reduce((a,c)=>a+c.total,0);
-  return{emEntrega,entregues:entreguesCmds.length,canceladas,total:cmds.length,valorMovimentado};
+  return{emEntrega,entregues:entreguesCmds.length,canceladas,total:cmds.length,valorMovimentado,valorDinheiro,valorPix,valorDebito,valorCredito,valorOutros};
 }
 function renderFuncionarios(lista=null){
   const data=lista||getFuncArr();
@@ -2182,7 +2216,13 @@ function renderFuncionarios(lista=null){
       <span title="Entregues" style="color:var(--green)">${st.entregues} entregues</span> ·
       <span title="Canceladas" style="color:var(--red)">${st.canceladas} canc.</span>
     </td>
-    <td>${fmt(st.valorMovimentado)}</td>
+    <td style="white-space:nowrap;font-size:.78rem">
+      <span title="Dinheiro" style="color:var(--green);font-weight:600">💵 ${fmt(st.valorDinheiro)}</span><br>
+      <span title="PIX">📱 ${fmt(st.valorPix)}</span><br>
+      <span title="Débito">💳D ${fmt(st.valorDebito)}</span><br>
+      <span title="Crédito">💳C ${fmt(st.valorCredito)}</span><br>
+      <strong title="Total">Total: ${fmt(st.valorMovimentado)}</strong>
+    </td>
     <td>
       <div style="display:flex;gap:6px">
         <button class="btn btn-ghost btn-sm" onclick="editarFuncionario(${f.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg></button>
@@ -2219,7 +2259,7 @@ function renderControleEntregas(){
   const funcs=getFuncArr();
   if(!funcs.length){t.innerHTML=`<tr><td><div class="empty-state"><p>Nenhum funcionário cadastrado</p></div></td></tr>`;return;}
   const linhas=funcs.map(f=>({f,st:calcFuncionarioEntregas(f.id,ini,fim)}));
-  t.innerHTML=`<thead><tr><th>Funcionário</th><th>Em Entrega</th><th>Entregues</th><th>Canceladas</th><th>Total</th><th>Valor Movimentado</th></tr></thead>
+  t.innerHTML=`<thead><tr><th>Funcionário</th><th>Em Entrega</th><th>Entregues</th><th>Canceladas</th><th>Qtd. Total</th><th>💵 Dinheiro</th><th>📱 PIX</th><th>💳 Débito</th><th>💳 Crédito</th><th>Total R$</th></tr></thead>
   <tbody>${linhas.map(({f,st})=>`
     <tr>
       <td><strong>${f.nome}</strong>${f.status!=='ativo'?' <span class="badge badge-inativo" style="font-size:.65rem">inativo</span>':''}</td>
@@ -2227,7 +2267,11 @@ function renderControleEntregas(){
       <td>${st.entregues}</td>
       <td>${st.canceladas}</td>
       <td>${st.total}</td>
-      <td>${fmt(st.valorMovimentado)}</td>
+      <td style="color:var(--green);font-weight:600">${fmt(st.valorDinheiro)}</td>
+      <td>${fmt(st.valorPix)}</td>
+      <td>${fmt(st.valorDebito)}</td>
+      <td>${fmt(st.valorCredito)}</td>
+      <td><strong>${fmt(st.valorMovimentado)}</strong></td>
     </tr>`).join('')}</tbody>`;
 }
 function filtrarFuncionarios(q){
@@ -2439,7 +2483,7 @@ function salvarConfig(tipo){
 }
 function exportarDados(){
   const blob=new Blob([JSON.stringify(STATE,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='sobreaguas_backup.json';a.click();
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='aquagas_backup.json';a.click();
   toast('Dados exportados!');
 }
 function limparDemoData(){
@@ -2717,7 +2761,7 @@ const SITE_LAYOUT_DEFAULTS = {
   sobre1Num: '10+', sobre1Leg: 'Anos de mercado',
   sobre2Num: '5k+', sobre2Leg: 'Clientes satisfeitos',
   sobre3Num: '50k+', sobre3Leg: 'Entregas realizadas',
-  footerCopy: '© 2025 SobreÁguas Distribuidora — Todos os direitos reservados',
+  footerCopy: '© 2025 AquaGás Distribuidora — Todos os direitos reservados',
   footerSocial: true,
   loader: true, scrollReveal: true, particulas: true, parallax: true,
 };

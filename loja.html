@@ -341,6 +341,7 @@ select option{background:var(--card)}
       <div class="nav-item active" onclick="showPage('comandas')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg> Comandas</div>
       <div class="nav-item" onclick="showPage('financeiro')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM432 312a24 24 0 1 1 0-48 24 24 0 1 1 0 48z"/></svg> Financeiro</div>
       <div class="nav-item" onclick="showPage('entregas')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M48 0C21.5 0 0 21.5 0 48V368c0 26.5 21.5 48 48 48H64c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H48zM416 160h50.7L544 237.3V256H416V160zM112 416a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm368-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg> Controle de Entregas</div>
+      <div class="nav-item" onclick="showPage('produtos')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M58.9 42.1c3-6.1 9.3-9.9 16-9.9H320V800H168c-13.7 0-24.7-11.1-24.7-24.8l-21.7-680.2c-.4-11.6 6.6-22 17.3-25.9zM0 112v32H578.9L544 512H96L58.9 112H0zM384 0H565.1c6.7 0 13 3.8 16 9.9l17.3 42.2c10.7 3.9 17.7 14.3 17.3 25.9L592 512H384V0zM64 544l16 128H560l16-128H64z"/></svg> Produtos</div>
     </nav>
     <div class="sidebar-footer">
       <div class="sidebar-user">
@@ -433,6 +434,15 @@ select option{background:var(--card)}
         <div class="table-header"><h3>Distribuição de Entregas por Funcionário</h3></div>
         <div style="overflow-x:auto"><table id="entregasTable"></table></div>
       </div>
+    </div>
+
+    <!-- ========== PRODUTOS ========== -->
+    <div class="page" id="page-produtos">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+        <div class="section-title" style="margin:0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M58.9 42.1c3-6.1 9.3-9.9 16-9.9H320V800H168c-13.7 0-24.7-11.1-24.7-24.8l-21.7-680.2c-.4-11.6 6.6-22 17.3-25.9zM0 112v32H578.9L544 512H96L58.9 112H0zM384 0H565.1c6.7 0 13 3.8 16 9.9l17.3 42.2c10.7 3.9 17.7 14.3 17.3 25.9L592 512H384V0zM64 544l16 128H560l16-128H64z"/></svg> Catálogo de Produtos</div>
+        <button class="btn btn-accent" onclick="abrirModalProduto()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg> Novo Produto</button>
+      </div>
+      <div class="produtos-adm-grid" id="produtosAdmGrid"></div>
     </div>
 
   </div><!-- /main-content -->
@@ -572,6 +582,58 @@ select option{background:var(--card)}
 </div>
 
 <!-- Modal Detalhes Comanda -->
+<div class="modal-overlay" id="modalProduto">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalProdutoTitle"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent)"><path d="M234.5 5.7c13.9-5 29.1-5 43.1 0l192 68.6C495 83.4 512 107.5 512 134.6V377.4c0 27-17 51.2-42.5 60.3l-192 68.6c-13.9 5-29.1 5-43.1 0l-192-68.6C17 417.6 0 393.5 0 366.4V134.6c0-27 17-51.2 42.5-60.3l192-68.6zM256 66L82.3 128 256 190l173.7-62L256 66zm32 368.6l160-57.1v-188L288 246.6v188z"/></svg> Novo Produto</h3>
+      <button class="btn-close" onclick="fecharModal('modalProduto')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome do Produto</label>
+          <input type="text" id="prodNome" placeholder="Ex: Garrafão 20L"/>
+        </div>
+        <div class="form-group">
+          <label>Preço (R$)</label>
+          <input type="number" id="prodPreco" placeholder="0,00" step="0.01"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Categoria</label>
+          <select id="prodCategoria">
+            <option value="agua">💧 Água</option>
+            <option value="gas">🔥 Gás</option>
+            <option value="acessorios">🔧 Acessórios</option>
+            <option value="limpeza">🧹 Limpeza</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ícone (emoji)</label>
+          <input type="text" id="prodIcone" placeholder="💧 🔥 🛢️ 🔧"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Cor do Destaque (hex)</label>
+        <div class="input-group">
+          <input type="color" id="prodCorPicker" value="#00b4ff" style="width:48px;height:42px;border:1px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;padding:2px 4px" oninput="document.getElementById('prodCor').value=this.value"/>
+          <input type="text" id="prodCor" placeholder="#00b4ff" oninput="document.getElementById('prodCorPicker').value=this.value||'#00b4ff'"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea id="prodDescricao" placeholder="Descreva o produto brevemente..."></textarea>
+      </div>
+      <input type="hidden" id="prodEditId"/>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="fecharModal('modalProduto')">Cancelar</button>
+      <button class="btn btn-accent" onclick="salvarProduto()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> Salvar</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modalDetalhesComanda">
   <div class="modal">
     <div class="modal-header">
@@ -624,7 +686,7 @@ function initFirebase(){
     if(!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
     _db = firebase.database();
     _firebaseOk = true;
-    console.log('🔥 Firebase Loja conectado!');
+    console.log('🔥 Firebase ADM conectado!');
     return true;
   }catch(e){ console.warn('Firebase init erro:', e.message); return false; }
 }
@@ -714,44 +776,50 @@ async function saveState(){
 
 /* ----------------------------------------------------------
    ✅ SINCRONIZAÇÃO EM TEMPO REAL via Firebase listener
-   Quando o site cria um pedido, o ADM recebe instantaneamente
+   Ouve TODO o banco (aquagas_db). Qualquer mudança feita no
+   painel do ADM (editar, mudar status, apagar comanda, editar
+   funcionário, etc.) chega aqui e atualiza a tela da loja na
+   hora, sem precisar dar F5.
 ---------------------------------------------------------- */
 function ativarListenerFirebase(){
-  // Ouve pedidos novos do site em tempo real
-  fbOnValue('aquagas_db/comandas', (comandas) => {
-    const novasCmdArr = objToArr(comandas);
-    const localArr    = getCmdArr();
-    const idsLocais   = new Set(localArr.map(c=>c.id));
-    const novas       = novasCmdArr.filter(c=>!idsLocais.has(c.id) && c.origem==='site');
+  fbOnValue('aquagas_db', (remoto) => {
+    if(!remoto) return;
 
-    if(novas.length > 0){
-      // Adiciona no STATE
-      novas.forEach(c=>{ STATE.comandas[c.id] = c; });
-      // Atualiza nextComandaId
-      const maxId = Math.max(...novasCmdArr.map(c=>c.id), STATE.nextComandaId-1);
-      STATE.nextComandaId = maxId + 1;
-      // Re-renderiza a UI
-      const dashActive = document.getElementById('page-dashboard')?.classList.contains('active');
-      const comActive  = document.getElementById('page-comandas')?.classList.contains('active');
-      if(dashActive) renderDashboard();
-      if(comActive)  renderComandas();
-      toast(`🌐 ${novas.length} novo(s) pedido(s) do site!`);
-    }
-  });
+    // Detecta pedidos novos vindos do site (pra avisar com toast, como antes)
+    const remotasCmdArr = objToArr(remoto.comandas);
+    const idsLocais      = new Set(getCmdArr().map(c=>c.id));
+    const novasDoSite    = remotasCmdArr.filter(c=>!idsLocais.has(c.id) && c.origem==='site');
 
-  // Ouve lançamentos novos do site
-  fbOnValue('aquagas_db/lancamentos', (lancamentos) => {
-    const novasLancArr = objToArr(lancamentos);
-    const localLancArr = getLancArr();
-    const idsLocais    = new Set(localLancArr.map(l=>l.id));
-    const novas        = novasLancArr.filter(l=>!idsLocais.has(l.id) && l.origem==='site');
-    if(novas.length > 0){
-      novas.forEach(l=>{ STATE.lancamentos[l.id] = l; });
-      const maxId = Math.max(...novasLancArr.map(l=>l.id), STATE.nextLancId-1);
-      STATE.nextLancId = maxId + 1;
+    // Se a comanda aberta no modal de edição foi apagada pelo ADM, fecha o modal antes de trocar o STATE
+    if(currentComandaEditId && remoto.comandas && !remoto.comandas[currentComandaEditId]){
+      fecharModal('modalComanda');
+      currentComandaEditId=null;
+      toast('Essa comanda foi apagada pelo administrador.', true);
     }
+
+    // Sincroniza TODO o estado local com o que está no Firebase
+    STATE.config       = remoto.config        || STATE.config;
+    STATE.produtos     = Array.isArray(remoto.produtos) ? remoto.produtos : objToArr(remoto.produtos);
+    STATE.comandas     = remoto.comandas      || {};
+    STATE.lancamentos  = remoto.lancamentos   || {};
+    STATE.funcionarios = remoto.funcionarios  || {};
+    STATE.nextProdId    = remoto.nextProdId    || STATE.nextProdId;
+    STATE.nextComandaId = remoto.nextComandaId || STATE.nextComandaId;
+    STATE.nextLancId    = remoto.nextLancId    || STATE.nextLancId;
+    STATE.nextFuncId    = remoto.nextFuncId    || STATE.nextFuncId;
+
+    // Re-renderiza somente a página que estiver aberta no momento
+    if(document.getElementById('page-dashboard')?.classList.contains('active'))   renderDashboard();
+    if(document.getElementById('page-comandas')?.classList.contains('active'))    renderComandas();
+    if(document.getElementById('page-financeiro')?.classList.contains('active'))  renderFinanceiro();
+    if(document.getElementById('page-entregas')?.classList.contains('active'))    renderControleEntregas();
+    if(document.getElementById('page-funcionarios')?.classList.contains('active'))renderFuncionarios();
+    if(document.getElementById('page-produtos')?.classList.contains('active'))    renderProdutosAdm();
+
+    if(novasDoSite.length > 0) toast(`🌐 ${novasDoSite.length} novo(s) pedido(s) do site!`);
   });
 }
+
 
 /* Mantido como alias para compatibilidade com código legado */
 function sincronizarComSite(){ /* substituído pelo listener Firebase */ }
@@ -775,7 +843,7 @@ function abrirPainelLoja(){
 /* ==========================================================
    NAV
 ========================================================== */
-const pageTitles={comandas:'Comandas',financeiro:'Financeiro',entregas:'Controle de Entregas'};
+const pageTitles={comandas:'Comandas',financeiro:'Financeiro',entregas:'Controle de Entregas',produtos:'Produtos'};
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
@@ -785,6 +853,7 @@ function showPage(id){
   if(id==='comandas')renderComandas();
   if(id==='financeiro')renderFinanceiro();
   if(id==='entregas')renderControleEntregas();
+  if(id==='produtos')renderProdutosAdm();
   closeSidebar();
 }
 function toggleSidebar(){
@@ -1145,8 +1214,8 @@ function renderLancamentos(){
   let lista=getLancArr().slice().reverse();
   if(filtro)lista=lista.filter(l=>l.tipo===filtro);
   const t=document.getElementById('lancamentosTable');
-  if(!lista.length){t.innerHTML=`<tr><td colspan="6"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M512 80c0 18-14.3 34.6-38.4 48c-29.1 16.1-72.5 27.5-122.3 30.9c-3.7-1.8-7.4-3.5-11.3-5C300.6 137.4 248.2 128 192 128c-8.3 0-16.4 .2-24.5 .6l-1.1-.6C142.3 114.6 128 98 128 80c0-44.2 86-80 192-80S512 35.8 512 80zM160.7 161.1c10.2-.7 20.7-1.1 31.3-1.1c62.2 0 117.4 12.3 152.5 31.4C369.3 204.9 384 221.7 384 240c0 4-.7 7.9-2.1 11.7c-4.6 13.2-17 25.3-35 35.5c0 0 0 0 0 0c-.1 .1-.3 .1-.4 .2l0 0 0 0c-5.7 3.2-12.1 6.2-19 9c-48.8 19.5-121.9 33.3-205.5 29.8C79.4 321.5 32 302.1 32 280s47.4-41.5 128.7-118.9zM256 512c-59 0-115.3-10.7-157.4-29.4C60 465.2 32 443.3 32 416V387.7c8.7 6.1 18.7 11.6 29.9 16.6l0 0c8.3 3.7 17.5 7.1 27.2 10.2C132.4 427.3 192.4 432 256 432s123.6-4.7 166.9-17.5c9.7-3 18.9-6.5 27.2-10.2l0 0c11.2-5 21.2-10.5 29.9-16.6V416c0 27.3-28 49.2-67.6 66.6C403.3 501.3 347 512 256 512z"/></svg><p>Nenhum lançamento</p></div></td></tr>`;return;}
-  t.innerHTML=`<thead><tr><th>#</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Data</th><th>Ações</th></tr></thead>
+  if(!lista.length){t.innerHTML=`<tr><td colspan="5"><div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M512 80c0 18-14.3 34.6-38.4 48c-29.1 16.1-72.5 27.5-122.3 30.9c-3.7-1.8-7.4-3.5-11.3-5C300.6 137.4 248.2 128 192 128c-8.3 0-16.4 .2-24.5 .6l-1.1-.6C142.3 114.6 128 98 128 80c0-44.2 86-80 192-80S512 35.8 512 80zM160.7 161.1c10.2-.7 20.7-1.1 31.3-1.1c62.2 0 117.4 12.3 152.5 31.4C369.3 204.9 384 221.7 384 240c0 4-.7 7.9-2.1 11.7c-4.6 13.2-17 25.3-35 35.5c0 0 0 0 0 0c-.1 .1-.3 .1-.4 .2l0 0 0 0c-5.7 3.2-12.1 6.2-19 9c-48.8 19.5-121.9 33.3-205.5 29.8C79.4 321.5 32 302.1 32 280s47.4-41.5 128.7-118.9zM256 512c-59 0-115.3-10.7-157.4-29.4C60 465.2 32 443.3 32 416V387.7c8.7 6.1 18.7 11.6 29.9 16.6l0 0c8.3 3.7 17.5 7.1 27.2 10.2C132.4 427.3 192.4 432 256 432s123.6-4.7 166.9-17.5c9.7-3 18.9-6.5 27.2-10.2l0 0c11.2-5 21.2-10.5 29.9-16.6V416c0 27.3-28 49.2-67.6 66.6C403.3 501.3 347 512 256 512z"/></svg><p>Nenhum lançamento</p></div></td></tr>`;return;}
+  t.innerHTML=`<thead><tr><th>#</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Data</th></tr></thead>
   <tbody>${lista.map(l=>`<tr>
     <td>#${l.id}</td>
     <td><span class="badge" style="${l.tipo==='receita'?'background:rgba(0,229,160,.15);color:var(--green)':'background:rgba(255,77,109,.15);color:var(--red)'}">${l.tipo==='receita'?'✅ Receita':'❌ Despesa'}</span></td>
@@ -1154,7 +1223,6 @@ function renderLancamentos(){
     <td style="color:var(--muted)">${l.categoria}</td>
     <td><strong style="color:${l.tipo==='receita'?'var(--green)':'var(--red)'}">${fmt(l.valor)}</strong></td>
     <td>${fmtDate(l.data)}</td>
-    <td><button class="btn btn-danger btn-sm" onclick="removerLancamento(${l.id})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button></td>
   </tr>`).join('')}</tbody>`;
 }
 function abrirModalLancamento(){
@@ -1185,12 +1253,7 @@ function salvarLancamento(){
   renderFinanceiro();
   toast('Lançamento salvo!');
 }
-function removerLancamento(id){
-  delete STATE.lancamentos[id];
-  saveState();
-  renderFinanceiro();
-  toast('Lançamento removido.');
-}
+/* Excluir lançamento é uma ação exclusiva do painel ADM (não disponível aqui na loja) */
 
 /* ==========================================================
    FUNCIONÁRIOS
