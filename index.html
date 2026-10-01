@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SobreÁguas — Painel Administrativo</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230ea5e9'/%3E%3Cstop offset='1' stop-color='%23f5900f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='48' height='48' rx='12' fill='url(%23g)'/%3E%3Cpath d='M18 6C18 6 8 20 8 27a10 10 0 0 0 20 0C28 20 18 6 18 6Z' fill='%23fff'/%3E%3Cg transform='translate(21,19) scale(0.72)'%3E%3Cpath d='M12 2C12 2 6 8 6 14c0 4.4 2.7 8 6 8s6-3.6 6-8c0-2-1-3.6-2-5 .5 2 0 3.5-1.5 3.5S12 11 12 9c0-3 2-4 0-7z' fill='%23fff' opacity='.88'/%3E%3C/g%3E%3C/svg%3E"/>
-<link rel="stylesheet" href="RELATORIO_STYLE/relatorio.css" />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 @keyframes piscaAlerta{0%,100%{opacity:1}50%{opacity:.45}}
@@ -402,6 +401,7 @@ select option{background:var(--card)}
     <nav class="sidenav">
       <div class="nav-section">Principal</div>
       <div class="nav-item active" onclick="showPage('dashboard')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z"/></svg> Dashboard</div>
+      <div class="nav-item" onclick="abrirRelatorio()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM80 272c0-8.8 7.2-16 16-16H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zm16 64H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 80H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg> Relatório PDF</div>
       <div class="nav-item" onclick="showPage('comandas')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/></svg> Comandas</div>
       <div class="nav-section">Gestão</div>
       <div class="nav-item" onclick="showPage('financeiro')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H80c-8.8 0-16-7.2-16-16s7.2-16 16-16H448c17.7 0 32-14.3 32-32s-14.3-32-32-32H64zM432 312a24 24 0 1 1 0-48 24 24 0 1 1 0 48z"/></svg> Financeiro</div>
@@ -1455,6 +1455,33 @@ select option{background:var(--card)}
       <button class="btn btn-ghost" onclick="fecharModal('modalFechamentoEntregador')">Fechar</button>
       <button class="btn btn-ghost" onclick="imprimirFechamentoEntregador()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zM432 248a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg> Imprimir</button>
       <button class="btn btn-green" onclick="enviarFechamentoWhatsApp()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalRelatorio">
+  <div class="modal">
+    <div class="modal-header">
+      <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em;color:var(--accent)"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM80 272c0-8.8 7.2-16 16-16H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16zm16 64H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 80H288c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg> Relatório Gerencial</h3>
+      <button class="btn-close" onclick="fecharModal('modalRelatorio')"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--muted);font-size:.85rem;margin-bottom:14px">Baixe um relatório completo em PDF: financeiro, comandas, vendas por forma de pagamento, produtos e desempenho dos entregadores.</p>
+      <div id="relatorioPeriodoBtns" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+        <button class="btn btn-sm btn-accent" data-periodo="hoje" onclick="selecionarPeriodoRelatorio('hoje')">Hoje</button>
+        <button class="btn btn-sm btn-ghost" data-periodo="semana" onclick="selecionarPeriodoRelatorio('semana')">Esta Semana</button>
+        <button class="btn btn-sm btn-ghost" data-periodo="mes" onclick="selecionarPeriodoRelatorio('mes')">Este Mês</button>
+        <button class="btn btn-sm btn-ghost" data-periodo="personalizado" onclick="selecionarPeriodoRelatorio('personalizado')">Personalizado</button>
+      </div>
+      <div id="relatorioCustomRow" class="form-row" style="display:none;margin-bottom:14px">
+        <div class="form-group"><label>De</label><input type="date" id="relatorioDataIni" onchange="atualizarPreviewRelatorio()"/></div>
+        <div class="form-group"><label>Até</label><input type="date" id="relatorioDataFim" onchange="atualizarPreviewRelatorio()"/></div>
+      </div>
+      <div id="relatorioPreview" style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;font-size:.82rem;color:var(--text);line-height:1.7"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="fecharModal('modalRelatorio')">Fechar</button>
+      <button class="btn btn-accent" onclick="gerarRelatorioPDF()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="width:1em;height:1em;vertical-align:-0.125em"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg> Baixar PDF</button>
     </div>
   </div>
 </div>
@@ -2590,6 +2617,203 @@ function imprimirFechamentoEntregador(){
   w.focus();
   setTimeout(()=>w.print(),300);
 }
+
+/* ==========================================================
+   📄 RELATÓRIO GERENCIAL EM PDF — Dia / Semana / Mês / Personalizado
+========================================================== */
+let relatorioPeriodoSelecionado='hoje';
+function abrirRelatorio(){
+  selecionarPeriodoRelatorio('hoje');
+  abrirModal('modalRelatorio');
+}
+function selecionarPeriodoRelatorio(p){
+  relatorioPeriodoSelecionado=p;
+  document.querySelectorAll('#relatorioPeriodoBtns button').forEach(b=>{
+    const ativo=b.dataset.periodo===p;
+    b.classList.toggle('btn-accent',ativo);
+    b.classList.toggle('btn-ghost',!ativo);
+  });
+  document.getElementById('relatorioCustomRow').style.display = p==='personalizado'?'flex':'none';
+  if(p==='personalizado'){
+    const hojeStr=new Date().toISOString().split('T')[0];
+    if(!document.getElementById('relatorioDataIni').value)document.getElementById('relatorioDataIni').value=hojeStr;
+    if(!document.getElementById('relatorioDataFim').value)document.getElementById('relatorioDataFim').value=hojeStr;
+  }
+  atualizarPreviewRelatorio();
+}
+/* Calcula o intervalo de datas (YYYY-MM-DD) e um rótulo legível pro período escolhido */
+function getRangeRelatorioAtual(){
+  const hoje=new Date();
+  const toISO=(d)=>d.toISOString().split('T')[0];
+  if(relatorioPeriodoSelecionado==='hoje'){
+    const iso=toISO(hoje);
+    return {ini:iso,fim:iso,label:'Hoje — '+fmtDate(iso)};
+  }
+  if(relatorioPeriodoSelecionado==='semana'){
+    const diaSemana=hoje.getDay();
+    const seg=new Date(hoje); seg.setDate(hoje.getDate()-((diaSemana+6)%7));
+    return {ini:toISO(seg),fim:toISO(hoje),label:'Esta semana — '+fmtDate(toISO(seg))+' até '+fmtDate(toISO(hoje))};
+  }
+  if(relatorioPeriodoSelecionado==='mes'){
+    const ini=new Date(hoje.getFullYear(),hoje.getMonth(),1);
+    const nomesMes=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    return {ini:toISO(ini),fim:toISO(hoje),label:nomesMes[hoje.getMonth()]+'/'+hoje.getFullYear()};
+  }
+  const ini=document.getElementById('relatorioDataIni').value;
+  const fim=document.getElementById('relatorioDataFim').value;
+  return {ini,fim,label: ini&&fim ? (fmtDate(ini)+' até '+fmtDate(fim)) : null};
+}
+/* Reúne todos os dados do período num único objeto, usado tanto no preview quanto no PDF */
+function coletarDadosRelatorio(ini,fim){
+  const cmds=getCmdArr().filter(c=>c.data>=ini&&c.data<=fim);
+  const entregues=cmds.filter(c=>statusConcluiu(c.status));
+  const canceladas=cmds.filter(c=>c.status==='cancelada');
+  const andamento=cmds.filter(c=>statusEmAndamento(c.status));
+  const lancs=getLancArr().filter(l=>l.data>=ini&&l.data<=fim);
+  const receitas=lancs.filter(l=>l.tipo==='receita').reduce((a,l)=>a+l.valor,0);
+  const despesas=lancs.filter(l=>l.tipo==='despesa').reduce((a,l)=>a+l.valor,0);
+  const somaPg=(tipo)=>entregues.filter(c=>c.pagamento===tipo).reduce((a,c)=>a+c.total,0);
+  const pagamentos={
+    dinheiro:somaPg('dinheiro'), pix:somaPg('pix'), cartao_debito:somaPg('cartao_debito'),
+    cartao_credito:somaPg('cartao_credito'), patrocinio:somaPg('patrocinio'),
+    fiado:somaPg('fiado'), a_confirmar:somaPg('a_confirmar')
+  };
+  const valorMovimentado=entregues.reduce((a,c)=>a+c.total,0);
+  const produtos={};
+  entregues.forEach(c=>(c.itens||[]).forEach(it=>{
+    if(!produtos[it.nome])produtos[it.nome]={nome:it.nome,qty:0,valor:0};
+    produtos[it.nome].qty+=it.qty;
+    produtos[it.nome].valor+=it.preco*it.qty;
+  }));
+  const produtosArr=Object.values(produtos).sort((a,b)=>b.valor-a.valor);
+  const funcionarios=getFuncArr()
+    .map(f=>({f,st:calcFuncionarioEntregas(f.id,ini,fim)}))
+    .filter(d=>d.st.total>0)
+    .sort((a,b)=>b.st.valorMovimentado-a.st.valorMovimentado);
+  return {cmds,entregues,canceladas,andamento,lancs,receitas,despesas,saldo:receitas-despesas,pagamentos,valorMovimentado,produtos:produtosArr,funcionarios};
+}
+function atualizarPreviewRelatorio(){
+  const el=document.getElementById('relatorioPreview');
+  const {ini,fim,label}=getRangeRelatorioAtual();
+  if(!ini||!fim||!label||ini>fim){
+    el.innerHTML='<span style="color:var(--muted)">Selecione um período válido para ver o resumo.</span>';
+    return;
+  }
+  const d=coletarDadosRelatorio(ini,fim);
+  el.innerHTML=`
+    <strong style="color:var(--accent)">${label}</strong><br>
+    📦 ${d.cmds.length} comanda(s) — ${d.entregues.length} entregue(s), ${d.andamento.length} em andamento, ${d.canceladas.length} cancelada(s)<br>
+    💰 Receitas: ${fmt(d.receitas)} · Despesas: ${fmt(d.despesas)} · Saldo: <strong style="color:${d.saldo>=0?'var(--green)':'var(--red)'}">${fmt(d.saldo)}</strong><br>
+    🚚 Valor movimentado em entregas: ${fmt(d.valorMovimentado)}
+  `;
+}
+function gerarRelatorioPDF(){
+  const {ini,fim,label}=getRangeRelatorioAtual();
+  if(!ini||!fim||!label||ini>fim){ toast('Selecione um período válido.',true); return; }
+  if(!window.jspdf){ toast('Não foi possível carregar a biblioteca de PDF. Verifique sua conexão com a internet.',true); return; }
+
+  const d=coletarDadosRelatorio(ini,fim);
+  const { jsPDF } = window.jspdf;
+  const doc=new jsPDF();
+  const corAccent=[14,165,233];
+  const corTextoMuted=[120,120,120];
+  const margemX=14;
+  let y=20;
+
+  doc.setFont('helvetica','bold'); doc.setFontSize(17); doc.setTextColor(20,20,20);
+  doc.text(STATE.config.nomeEmpresa||'SobreÁguas', margemX, y); y+=7;
+  doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.setTextColor(60,60,60);
+  doc.text('Relatório Gerencial — '+label, margemX, y); y+=6;
+  doc.setFontSize(8.5); doc.setTextColor(...corTextoMuted);
+  doc.text('Gerado em '+new Date().toLocaleString('pt-BR'), margemX, y); y+=8;
+
+  doc.autoTable({
+    startY:y, margin:{left:margemX,right:margemX},
+    head:[['Resumo Financeiro','Valor']],
+    body:[
+      ['Receitas', fmt(d.receitas)],
+      ['Despesas', fmt(d.despesas)],
+      ['Saldo', fmt(d.saldo)],
+    ],
+    theme:'grid', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:9.5}, columnStyles:{1:{halign:'right'}}
+  });
+  y=doc.lastAutoTable.finalY+8;
+
+  doc.autoTable({
+    startY:y, margin:{left:margemX,right:margemX},
+    head:[['Comandas no período','Quantidade']],
+    body:[
+      ['Total de comandas', String(d.cmds.length)],
+      ['Entregues', String(d.entregues.length)],
+      ['Em andamento (pendente/preparo/saiu p/ entrega)', String(d.andamento.length)],
+      ['Canceladas', String(d.canceladas.length)],
+      ['Valor total movimentado (entregues)', fmt(d.valorMovimentado)],
+    ],
+    theme:'grid', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:9.5}, columnStyles:{1:{halign:'right'}}
+  });
+  y=doc.lastAutoTable.finalY+8;
+
+  doc.autoTable({
+    startY:y, margin:{left:margemX,right:margemX},
+    head:[['Vendas por Forma de Pagamento','Valor']],
+    body:[
+      ['Dinheiro', fmt(d.pagamentos.dinheiro)],
+      ['PIX', fmt(d.pagamentos.pix)],
+      ['Cartão de Débito', fmt(d.pagamentos.cartao_debito)],
+      ['Cartão de Crédito', fmt(d.pagamentos.cartao_credito)],
+      ['Patrocínio', fmt(d.pagamentos.patrocinio)],
+      ['Fiado', fmt(d.pagamentos.fiado)],
+    ],
+    theme:'grid', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:9.5}, columnStyles:{1:{halign:'right'}}
+  });
+  y=doc.lastAutoTable.finalY+8;
+
+  if(d.produtos.length){
+    doc.autoTable({
+      startY:y, margin:{left:margemX,right:margemX},
+      head:[['Produto','Qtd','Valor Total']],
+      body:d.produtos.map(p=>[p.nome,p.qty+'x',fmt(p.valor)]),
+      theme:'grid', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:9.5},
+      columnStyles:{1:{halign:'center'},2:{halign:'right'}}
+    });
+    y=doc.lastAutoTable.finalY+8;
+  }
+
+  if(d.funcionarios.length){
+    doc.autoTable({
+      startY:y, margin:{left:margemX,right:margemX},
+      head:[['Entregador','Entregues','Canceladas','Dinheiro','Valor Movimentado']],
+      body:d.funcionarios.map(({f,st})=>[f.nome,String(st.entregues),String(st.canceladas),fmt(st.valorDinheiro),fmt(st.valorMovimentado)]),
+      theme:'grid', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:9},
+      columnStyles:{1:{halign:'center'},2:{halign:'center'},3:{halign:'right'},4:{halign:'right'}}
+    });
+    y=doc.lastAutoTable.finalY+8;
+  }
+
+  if(d.lancs.length){
+    doc.autoTable({
+      startY:y, margin:{left:margemX,right:margemX},
+      head:[['Data','Tipo','Descrição','Categoria','Valor']],
+      body:[...d.lancs].sort((a,b)=>a.data.localeCompare(b.data)).map(l=>[
+        fmtDate(l.data), l.tipo==='receita'?'Receita':'Despesa', l.descricao||'—', l.categoria||'—', fmt(l.valor)
+      ]),
+      theme:'striped', headStyles:{fillColor:corAccent,textColor:255}, styles:{fontSize:8},
+      columnStyles:{4:{halign:'right'}}
+    });
+  }
+
+  const totalPaginas=doc.internal.getNumberOfPages();
+  for(let i=1;i<=totalPaginas;i++){
+    doc.setPage(i);
+    doc.setFontSize(8); doc.setTextColor(...corTextoMuted);
+    doc.text('Página '+i+' de '+totalPaginas, doc.internal.pageSize.getWidth()-margemX, doc.internal.pageSize.getHeight()-8, {align:'right'});
+  }
+
+  const nomeArquivo='Relatorio_'+relatorioPeriodoSelecionado+'_'+ini+'_a_'+fim+'.pdf';
+  doc.save(nomeArquivo);
+  toast('📄 Relatório PDF gerado com sucesso!');
+}
+
 function filtrarFuncionarios(q){
   const lista=getFuncArr().filter(f=>f.nome.toLowerCase().includes(q.toLowerCase())||f.cargo.toLowerCase().includes(q.toLowerCase()));
   renderFuncionarios(lista);
@@ -3385,6 +3609,6 @@ function faIcon(cls, style) {
      CDN do jsPDF (necessário para gerar o PDF)
 ============================================================ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="RELATORIO_JS/relatorio.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 </body>
 </html>
